@@ -345,7 +345,7 @@ export default function TrustedBy() {
             <p className="text-acier-doux font-inter">Hear from the brands we&apos;ve helped transform</p>
           </div>
           
-          <div className="relative h-64 overflow-hidden">
+          <div className="relative min-h-64 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTestimonial}
