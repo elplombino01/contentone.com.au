@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Block internal build assets while allowing public pages
+Disallow: /_next/static/
+Disallow: /_next/image
+
+# Allow API indexing only if desired; keep disallowed for now
+Disallow: /api/
+
+# Crawl-delay is not officially supported by Google; omit to avoid unintended throttling
+Sitemap: https://contentone.com.au/sitemap.xml
