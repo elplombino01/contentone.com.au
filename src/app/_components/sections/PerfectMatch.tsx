@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useId, useEffect, useMemo } from "react";
 import {
   ArrowRight,
   CheckCircle,
@@ -13,6 +13,28 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+
+type BackgroundParticle = {
+  key: string;
+  size: number;
+  left: string;
+  top: string;
+  color: string;
+  x: number;
+  y: number;
+  duration: number;
+};
+
+type HoverParticle = {
+  key: string;
+  size: number;
+  left: string;
+  top: string;
+  x: number;
+  y: number;
+  duration: number;
+  delay: number;
+};
 
 export default function PerfectMatch() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
@@ -438,7 +460,7 @@ function ClientParticles({ reduceMotion }: { reduceMotion: boolean }) {
 
   return (
     <>
-      {particles.map((p) => (
+      {particles.map((p: BackgroundParticle) => (
         <motion.div
           key={p.key}
           className="absolute rounded-full"
@@ -490,7 +512,7 @@ function ClientHoverParticles({ reduceMotion }: { reduceMotion: boolean }) {
 
   return (
     <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none" aria-hidden="true">
-      {particles.map((p) => (
+      {particles.map((p: HoverParticle) => (
         <motion.div
           key={p.key}
           className="absolute rounded-full bg-indigo-electrique/20"

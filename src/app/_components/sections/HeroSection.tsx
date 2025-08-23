@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Sparkles, Zap, Star, Code, Palette, BarChart3 } from "lucide-react";
 
 export default function HeroSection() {

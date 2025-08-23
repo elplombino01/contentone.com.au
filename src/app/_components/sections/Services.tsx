@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useId } from "react";
 import Link from "next/link";
 import {
   TrendingUp,
