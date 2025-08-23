@@ -123,7 +123,7 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden"
+      className="relative min-h-screen-dvh flex flex-col items-center justify-center text-center overflow-hidden"
       id="home"
     >
       <div className="container py-24 md:py-32">

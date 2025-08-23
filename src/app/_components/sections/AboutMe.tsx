@@ -118,8 +118,8 @@ export default function AboutMe() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="animate-fade-in-up flex flex-col items-center justify-center text-center"
+            viewport={{ once: true, amount: 0.1 }}
+            className="animate-fade-in-up flex flex-col items-center justify-center text-center will-change-transform-opacity-filter"
           >
             {/* Badge */}
             <motion.div
@@ -194,14 +194,6 @@ export default function AboutMe() {
                 />
                 <motion.p
                   className="text-2xl font-satoshi italic leading-relaxed"
-                  animate={{
-                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
                   style={{
                     background: "linear-gradient(90deg, #F8F8F8, #6366F1, #06B6D4, #F8F8F8)",
                     backgroundSize: "300% 300%",
@@ -361,8 +353,8 @@ export default function AboutMe() {
             variants={imageVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="relative"
+            viewport={{ once: true, amount: 0.1 }}
+            className="relative will-change-transform-opacity-filter"
           >
             {/* Floating elements (reduced-motion friendly) */}
             {/* Remove perpetual float to lower paint. Keep decorative static badge. */}
@@ -387,7 +379,7 @@ export default function AboutMe() {
 
             {/* Main image with parallax effect */}
             <motion.div
-              className="relative w-full h-auto rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-electrique/20 to-cyan-electrique/20"
+              className="relative w-full h-auto rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-electrique/20 to-cyan-electrique/20 will-change-transform-opacity"
               style={{ y }}
             >
               <div className="relative w-full h-full flex items-center justify-center">

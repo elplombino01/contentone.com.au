@@ -34,7 +34,7 @@ export default function ContactForm() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const reduceMotion = useReducedMotion();
 
   const {
@@ -268,8 +268,8 @@ export default function ContactForm() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center mb-16 animate-fade-in-up"
+            viewport={{ once: true, amount: 0.1 }}
+            className="text-center mb-16 animate-fade-in-up will-change-transform-opacity"
           >
             <motion.div
               variants={itemVariants}
@@ -307,6 +307,7 @@ export default function ContactForm() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
+              className="will-change-transform-opacity"
             >
               <motion.h2
                 variants={itemVariants}
@@ -535,7 +536,7 @@ export default function ContactForm() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="bg-secondary border border-graphite rounded-xl p-8 lg:p-12 h-full flex flex-col justify-center"
+              className="bg-secondary border border-graphite rounded-xl p-8 lg:p-12 h-full flex flex-col justify-center will-change-transform-opacity"
               role="complementary"
               aria-label="Testimonial"
             >

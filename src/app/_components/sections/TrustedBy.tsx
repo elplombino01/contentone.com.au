@@ -57,7 +57,7 @@ const testimonials = [
 
 export default function TrustedBy() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const [counterValues, setCounterValues] = useState([0, 0, 0]);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const reduceMotion = useReducedMotion();
@@ -208,7 +208,7 @@ export default function TrustedBy() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-16 max-w-3xl mx-auto"
         >
           <motion.div
@@ -251,7 +251,7 @@ export default function TrustedBy() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
         >
           {stats.map((stat, index) => (
@@ -280,7 +280,7 @@ export default function TrustedBy() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="mb-16 will-change-transform-opacity"
           style={{ y }}
         >
@@ -337,7 +337,7 @@ export default function TrustedBy() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="relative max-w-4xl mx-auto"
         >
           <div className="text-center mb-8">

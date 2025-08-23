@@ -20,7 +20,7 @@ export default function Services() {
   const [hoveredService, setHoveredService] = useState<string | null>(null);
   const [activeService, setActiveService] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const reduceMotion = useReducedMotion();
   const baseId = useId();
 
@@ -165,7 +165,7 @@ export default function Services() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-16"
           role="region"
           aria-labelledby="services-title"
@@ -205,8 +205,8 @@ export default function Services() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20 will-change-transform-opacity"
           role="list"
           aria-label="Services we offer"
         >
@@ -253,8 +253,8 @@ export default function Services() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="mb-20"
+          viewport={{ once: true, amount: 0.1 }}
+          className="mb-20 will-change-transform-opacity"
         >
           <motion.div
             variants={itemVariants}
@@ -311,8 +311,8 @@ export default function Services() {
           variants={itemVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="text-center"
+          viewport={{ once: true, amount: 0.1 }}
+          className="text-center will-change-transform-opacity"
         >
           <div className="inline-block p-1 rounded-2xl bg-gradient-to-r from-indigo-electrique to-cyan-electrique">
             <div className="bg-secondary rounded-2xl p-8 md:p-12">

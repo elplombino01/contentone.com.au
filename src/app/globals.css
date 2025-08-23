@@ -277,6 +277,10 @@
     text-wrap: balance;
   }
 
+  .min-h-screen-dvh {
+    min-height: 100dvh;
+  }
+
   /* Subtle background glow dots utility (static, low opacity, no animation) */
   .bg-glow-dots {
     position: relative;
@@ -387,6 +391,10 @@
 
   .will-change-transform-opacity {
     will-change: transform, opacity;
+  }
+
+  .will-change-transform-opacity-filter {
+    will-change: transform, opacity, filter;
   }
 
   /* Shadow utilities */

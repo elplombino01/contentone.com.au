@@ -160,7 +160,7 @@ export default function CaseStudies() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-16"
         >
           <motion.div
@@ -192,7 +192,7 @@ export default function CaseStudies() {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 motion-reduce:transform-none" role="list" aria-label="Case studies">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 motion-reduce:transform-none will-change-transform-opacity" role="list" aria-label="Case studies">
           {caseStudies.map((study, index) => (
             <motion.div
               key={study.id}

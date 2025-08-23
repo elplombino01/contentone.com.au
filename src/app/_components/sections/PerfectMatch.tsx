@@ -17,7 +17,7 @@ import {
 export default function PerfectMatch() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const reduceMotion = useReducedMotion() ?? false;
   const baseId = useId();
 
@@ -211,7 +211,7 @@ export default function PerfectMatch() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="text-center mb-16 animate-fade-in-up"
         >
           <motion.div
@@ -241,8 +241,8 @@ export default function PerfectMatch() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-6 gap-6 max-w-6xl mx-auto"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-6 gap-6 max-w-6xl mx-auto will-change-transform-opacity"
           style={{ y }}
           role="list"
           aria-label="Challenges grid"
@@ -375,7 +375,7 @@ export default function PerfectMatch() {
           variants={itemVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           className="mt-20 text-center"
         >
           <div className="inline-block p-1 rounded-xl bg-gradient-to-r from-indigo-electrique to-cyan-electrique">

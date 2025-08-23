@@ -8,7 +8,7 @@ import ContactForm from "./_components/sections/ContactForm";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-onyx-profond">
+    <main className="min-h-screen-dvh bg-onyx-profond">
       <HeroSection />
       <TrustedBy />
       <PerfectMatch />
