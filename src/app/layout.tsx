@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
+import dynamic from 'next/dynamic';
 import "./globals.css";
-import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
+// Dynamically import the Header to prevent hydration errors on iOS
+const Header = dynamic(() => import('./_components/Header'), {
+  ssr: false,
+  // A placeholder with the same height as the header to prevent layout shift
+  loading: () => <header className="fixed top-0 left-0 right-0 z-50 h-20" />,
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "ContentOne - Performance-Driven Content Agency",
+    default: "ContentOne | Performance-Driven Content Agency for Australian Businesses",
     template: "%s | ContentOne",
   },
-  description: "Transform your content into performance-driven assets that deliver measurable results. Data-driven strategies for ambitious brands.",
+  description: "We build content engines that convert. Partner with our data-driven content agency in Australia to transform your ideas into measurable ROI and remarkable growth.",
   keywords: ["content agency", "content strategy", "performance marketing", "brand development", "content creation", "digital marketing", "SEO optimization", "content marketing"],
   authors: [{ name: "François Vaccarello", url: "https://contentone.com.au" }],
   creator: "ContentOne",

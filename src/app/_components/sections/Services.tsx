@@ -2,6 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useState, useRef, useId } from "react";
+import Link from "next/link";
 import {
   TrendingUp,
   Target,
@@ -66,15 +67,16 @@ export default function Services() {
     },
     {
       id: "ai",
-      title: "AI-Powered Efficiency",
-      description: "We leverage cutting-edge AI tools like Opus Clip, Runway & ChatGPT for rapid content repurposing, ideation, and predictive insights. Work smarter, not just harder.",
+      title: "AI-Enhanced Content Strategy",
+      href: "/services/content-strategy",
+      description: "We leverage cutting-edge AI for rapid content repurposing, ideation, and predictive insights. Work smarter, not just harder.",
       icon: Zap,
       color: "from-indigo-electrique to-cyan-electrique",
       features: [
-        "Content repurposing",
-        "AI ideation",
-        "Predictive insights",
-        "Automation tools"
+        "Data-Driven Insights",
+        "Predictive SEO",
+        "Intelligent Content Mapping",
+        "Performance Forecasting"
       ]
     },
   ];
@@ -210,18 +212,8 @@ export default function Services() {
           role="list"
           aria-label="Services we offer"
         >
-          {services.map((service, index) => (
-            <motion.div
-              key={service.id}
-              variants={serviceCardVariants}
-              custom={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              whileHover="hover"
-              className="group relative"
-              role="listitem"
-            >
+          {services.map((service, index) => {
+            const cardInner = (
               <div className="relative h-full p-[1px] rounded-2xl overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 <Card elevation="md" radius="lg" interactive bordered className="relative h-full transition-all duration-300 group-hover:border-transparent group-hover:shadow-xl group-hover:shadow-indigo-electrique/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-electrique/60">
@@ -244,8 +236,30 @@ export default function Services() {
                   </CardBody>
                 </Card>
               </div>
-            </motion.div>
-          ))}
+            );
+
+            return (
+              <motion.div
+                key={service.id}
+                variants={serviceCardVariants}
+                custom={index}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                whileHover="hover"
+                className="group relative h-full"
+                role="listitem"
+              >
+                {service.href ? (
+                  <Link href={service.href} className="block h-full focus:outline-none" tabIndex={-1}>
+                    {cardInner}
+                  </Link>
+                ) : (
+                  cardInner
+                )}
+              </motion.div>
+            )
+          })}
         </motion.div>
 
         {/* Process Section */}
@@ -302,7 +316,7 @@ export default function Services() {
                   {step.description}
                 </p>
               </motion.div>
-            ))}
+            )))}
           </div>
         </motion.div>
 

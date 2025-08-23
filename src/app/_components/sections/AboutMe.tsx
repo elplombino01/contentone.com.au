@@ -1,8 +1,8 @@
-"use client";
+'''"use client";
 
 import { motion, useInView, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import {
   Quote,
   Award,
@@ -16,6 +16,58 @@ import {
   BookOpen,
   Zap
 } from "lucide-react";
+
+function ButtonParticles({ reduceMotion }: { reduceMotion: boolean | null }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const particles = useMemo(() => {
+    if (reduceMotion) return [];
+    return [...Array(5)].map((_, i) => ({
+      key: i,
+      width: Math.random() * 4 + 2,
+      height: Math.random() * 4 + 2,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      x: [0, Math.random() * 20 - 10],
+      y: [0, -Math.random() * 20 - 10],
+      opacity: [0, 0.8, 0],
+      duration: Math.random() * 2 + 1,
+      repeatDelay: Math.random() * 2,
+    }));
+  }, [reduceMotion]);
+
+  if (!mounted || reduceMotion) {
+    return null;
+  }
+
+  return (
+    <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+      {particles.map((p) => (
+        <motion.div
+          key={p.key}
+          className="absolute rounded-full bg-ivoire-mat/20"
+          style={{
+            width: p.width,
+            height: p.height,
+            left: p.left,
+            top: p.top,
+          }}
+          animate={{
+            x: p.x,
+            y: p.y,
+            opacity: p.opacity,
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            repeatDelay: p.repeatDelay,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function AboutMe() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -71,28 +123,6 @@ export default function AboutMe() {
     },
   };
 
-  const statVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.9, filter: "blur(8px)" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.7,
-        ease: [0.22, 0.61, 0.36, 1],
-      },
-    },
-    hover: {
-      y: -8,
-      scale: 1.03,
-      transition: {
-        duration: 0.4,
-        ease: [0.22, 0.61, 0.36, 1],
-      },
-    },
-  };
-
   return (
     <section
       ref={sectionRef}
@@ -108,7 +138,6 @@ export default function AboutMe() {
           <div className="absolute inset-0 bg-grid-pattern bg-[length:40px_40px]" />
         </div>
         
-        {/* Removed perpetual particles for perf: keep static background only */}
       </div>
 
       <div className="container relative z-10">
@@ -121,7 +150,6 @@ export default function AboutMe() {
             viewport={{ once: true, amount: 0.1 }}
             className="animate-fade-in-up flex flex-col items-center justify-center text-center will-change-transform-opacity-filter"
           >
-            {/* Badge */}
             <motion.div
               variants={itemVariants}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-6"
@@ -157,7 +185,6 @@ export default function AboutMe() {
               I founded ContentOne to be a new kind of creative partner. We&apos;re a team of performance-obsessed content nerds who blend deep visual instincts with real marketing know-how. We&apos;re here to build your content machine.
             </motion.p>
 
-            {/* Quote */}
             <motion.div
               variants={itemVariants}
               className="relative mb-8"
@@ -216,7 +243,6 @@ export default function AboutMe() {
               that scale, not just tactics that look good on paper.
             </motion.p>
 
-            {/* Stats */}
             <motion.div
               variants={containerVariants}
               className="grid grid-cols-3 gap-4 mb-8 text-center justify-center"
@@ -254,7 +280,6 @@ export default function AboutMe() {
               ))}
             </motion.div>
 
-            {/* Expertise */}
             <motion.div variants={itemVariants} className="text-center">
               <h3 className="text-xl md:text-2xl xl:text-3xl font-satoshi font-semibold text-ivoire-mat mb-4">
                 <span className="inline-flex items-center">
@@ -283,7 +308,6 @@ export default function AboutMe() {
               </div>
             </motion.div>
 
-            {/* CTA */}
             <motion.div
               variants={itemVariants}
               className="mt-8 text-center"
@@ -317,38 +341,11 @@ export default function AboutMe() {
                   className="absolute inset-0 bg-gradient-to-r from-cyan-electrique to-indigo-electrique opacity-0 group-hover:opacity-100 transition-opacity duration-300 motion-reduce:transition-none motion-reduce:opacity-0"
                   initial={false}
                 />
-                {/* Animated particles (disabled under reduced motion) */}
-                {!prefersReducedMotion && (
-                  <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-                    {[...Array(5)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute rounded-full bg-ivoire-mat/20"
-                        style={{
-                          width: Math.random() * 4 + 2,
-                          height: Math.random() * 4 + 2,
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
-                        }}
-                        animate={{
-                          x: [0, Math.random() * 20 - 10],
-                          y: [0, -Math.random() * 20 - 10],
-                          opacity: [0, 0.8, 0],
-                        }}
-                        transition={{
-                          duration: Math.random() * 2 + 1,
-                          repeat: Infinity,
-                          repeatDelay: Math.random() * 2,
-                        }}
-                      />
-                    ))}
-                  </div>
-                )}
+                <ButtonParticles reduceMotion={prefersReducedMotion} />
               </motion.button>
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Image */}
           <motion.div
             variants={imageVariants}
             initial="hidden"
@@ -356,8 +353,6 @@ export default function AboutMe() {
             viewport={{ once: true, amount: 0.1 }}
             className="relative will-change-transform-opacity-filter"
           >
-            {/* Floating elements (reduced-motion friendly) */}
-            {/* Remove perpetual float to lower paint. Keep decorative static badge. */}
             <div
               className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-gradient-to-br from-indigo-electrique to-violet-profond p-0.5 z-10"
               aria-hidden="true"
@@ -367,7 +362,6 @@ export default function AboutMe() {
               </div>
             </div>
             
-            {/* Remove perpetual float to lower paint. Keep decorative static badge. */}
             <div
               className="absolute -bottom-6 -left-6 w-20 h-20 rounded-full bg-gradient-to-br from-cyan-electrique to-indigo-electrique p-0.5 z-10"
               aria-hidden="true"
@@ -377,7 +371,6 @@ export default function AboutMe() {
               </div>
             </div>
 
-            {/* Main image with parallax effect */}
             <motion.div
               className="relative w-full h-auto rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-electrique/20 to-cyan-electrique/20 will-change-transform-opacity"
               style={{ y }}
@@ -394,11 +387,9 @@ export default function AboutMe() {
                 />
               </div>
               
-              {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-onyx-profond/80 via-transparent to-transparent rounded-3xl pointer-events-none" aria-hidden="true" />
             </motion.div>
 
-            {/* Experience badge */}
             <motion.div
               className="absolute bottom-6 right-6 bg-gradient-to-r from-indigo-electrique to-violet-profond rounded-xl p-4 shadow-lg z-20"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -416,3 +407,4 @@ export default function AboutMe() {
     </section>
   );
 }
+'''

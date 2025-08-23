@@ -1,6 +1,6 @@
-"use client";
+'''"use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { motion, useInView, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { z } from "zod";
@@ -28,6 +28,63 @@ const contactSchema = z.object({
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
+
+function BackgroundParticles({ reduceMotion }: { reduceMotion: boolean | null }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const particles = useMemo(() => {
+    if (reduceMotion) return [];
+    return [...Array(15)].map((_, i) => ({
+        key: i,
+        width: Math.random() * 6 + 2,
+        height: Math.random() * 6 + 2,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        background: i % 3 === 0
+            ? "rgba(99, 102, 241, 0.4)"
+            : i % 3 === 1
+            ? "rgba(6, 182, 212, 0.4)"
+            : "rgba(139, 92, 246, 0.4)",
+        x: [0, Math.random() * 40 - 20],
+        y: [0, Math.random() * 40 - 20],
+        opacity: [0.1, 0.6, 0.1],
+        duration: Math.random() * 10 + 10,
+    }));
+  }, [reduceMotion]);
+
+  if (!mounted || reduceMotion) {
+    return null;
+  }
+
+  return (
+    <>
+      {particles.map((p) => (
+        <motion.div
+            key={p.key}
+            className="absolute rounded-full"
+            style={{
+              width: p.width,
+              height: p.height,
+              left: p.left,
+              top: p.top,
+              background: p.background,
+            }}
+            animate={{
+              x: p.x,
+              y: p.y,
+              opacity: p.opacity,
+            }}
+            transition={{
+              duration: p.duration,
+              repeat: Infinity,
+              repeatType: "reverse",
+            }}
+          />
+      ))}
+    </>
+  );
+}
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -196,7 +253,6 @@ export default function ContactForm() {
       className="section bg-gradient-to-br from-onyx-profond via-secondary to-onyx-profond relative overflow-hidden"
       id="contact"
     >
-      {/* JSON-LD Person schema for the founder to strengthen SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -222,44 +278,15 @@ export default function ContactForm() {
         }}
       />
       <div className="container" role="region" aria-labelledby="contact-heading">
-      {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className={`absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-indigo-electrique/5 blur-3xl ${reduceMotion ? "" : "animate-pulse"}`} />
         <div className={`absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-cyan-electrique/5 blur-3xl ${reduceMotion ? "" : "animate-pulse"}`} />
         
-        {/* Animated Grid Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-grid-pattern bg-[length:40px_40px]" />
         </div>
         
-        {/* Floating Particles (disabled under reduced motion) */}
-        {!reduceMotion && [...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: Math.random() * 6 + 2,
-              height: Math.random() * 6 + 2,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              background: i % 3 === 0
-                ? "rgba(99, 102, 241, 0.4)"
-                : i % 3 === 1
-                ? "rgba(6, 182, 212, 0.4)"
-                : "rgba(139, 92, 246, 0.4)",
-            }}
-            animate={{
-              x: [0, Math.random() * 40 - 20],
-              y: [0, Math.random() * 40 - 20],
-              opacity: [0.1, 0.6, 0.1],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              repeatType: "reverse",
-            }}
-          />
-        ))}
+        <BackgroundParticles reduceMotion={reduceMotion} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -374,14 +401,12 @@ export default function ContactForm() {
                         autoComplete={field.id === "email" ? "email" : field.id === "name" ? "name" : field.id === "company" ? "organization" : "on"}
                       />
                     )}
-                    {/* Input skeleton overlay when not yet in view (perceived loading) */}
                     {!isInView && (
                       <div className="absolute inset-0 rounded-lg pointer-events-none">
                         <div className="skeleton w-full h-full rounded-lg" aria-hidden="true" />
                       </div>
                     )}
                     
-                    {/* Animated border */}
                     <motion.div
                       className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-electrique to-cyan-electrique rounded-full"
                       initial={{ scaleX: 0 }}
@@ -428,7 +453,6 @@ export default function ContactForm() {
                     aria-describedby={errors.message ? "message-error" : undefined}
                   />
                   
-                  {/* Animated border */}
                   <motion.div
                     className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-electrique to-cyan-electrique rounded-full"
                     initial={{ scaleX: 0 }}
@@ -490,14 +514,12 @@ export default function ContactForm() {
                     )}
                   </span>
                   
-                  {/* Animated background */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-cyan-electrique to-indigo-electrique opacity-0 group-hover:opacity-100 transition-opacity duration-300 motion-reduce:transition-none motion-reduce:opacity-0"
                     initial={false}
                   />
                 </motion.button>
 
-                {/* Micro success/error toast under button */}
                 <AnimatePresence>
                   {submitStatus === 'success' && (
                     <motion.div
@@ -567,3 +589,4 @@ export default function ContactForm() {
     </section>
   );
 }
+'''
