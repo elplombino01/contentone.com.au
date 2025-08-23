@@ -237,7 +237,6 @@ export default function CaseStudies() {
                       height={70}
                       sizes="(min-width: 1024px) 220px, (min-width: 768px) 200px, 180px"
                       className="h-12 w-auto object-contain"
-                      priority={true}
                       quality={100}
                       placeholder="empty"
                     />
