@@ -1,4 +1,4 @@
-'''"use client";
+"use client";
 
 import { motion, useInView, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import Image from "next/image";
@@ -129,7 +129,6 @@ export default function AboutMe() {
       id="about"
       className="section relative overflow-hidden bg-gradient-to-br from-onyx-profond via-secondary to-onyx-profond"
     >
-      {/* Background decoration (decorative only) */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true" role="presentation">
         <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-indigo-electrique/5 blur-3xl" />
         <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-cyan-electrique/5 blur-3xl" />
@@ -142,7 +141,6 @@ export default function AboutMe() {
 
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Text Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -167,7 +165,7 @@ export default function AboutMe() {
                   <path d="M12 22s8-4 8-10V7l-8-5-8 5v5c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <span>You&apos;re Not Hiring an Agency. <span className="text-gradient" style={{ WebkitBackgroundClip: "text", backgroundClip: "text" }}>You&apos;re Partnering with Me.</span></span>
+                <span>You're Not Hiring an Agency. <span className="text-gradient" style={{ WebkitBackgroundClip: "text", backgroundClip: "text" }}>You're Partnering with Me.</span></span>
               </span>
             </motion.h2>
             
@@ -175,14 +173,14 @@ export default function AboutMe() {
               variants={itemVariants}
               className="text-lg text-acier-doux font-inter leading-relaxed mb-6 max-w-[72ch] text-pretty"
             >
-              Based in Melbourne, I’m François Vaccarello. For over 15 years, I&apos;ve directed content for brands big and small, and I&apos;ve learned one thing: creative work must do more than look good—it must work.
+              Based in Melbourne, I’m François Vaccarello. For over 15 years, I've directed content for brands big and small, and I've learned one thing: creative work must do more than look good—it must work.
             </motion.p>
 
             <motion.p
               variants={itemVariants}
               className="text-lg text-acier-doux font-inter leading-relaxed mb-6 max-w-[72ch] text-pretty"
             >
-              I founded ContentOne to be a new kind of creative partner. We&apos;re a team of performance-obsessed content nerds who blend deep visual instincts with real marketing know-how. We&apos;re here to build your content machine.
+              I founded ContentOne to be a new kind of creative partner. We're a team of performance-obsessed content nerds who blend deep visual instincts with real marketing know-how. We're here to build your content machine.
             </motion.p>
 
             <motion.div
@@ -229,7 +227,7 @@ export default function AboutMe() {
                     WebkitTextFillColor: "transparent",
                   }}
                 >
-                  &quot;The most expensive content is the one that doesn&apos;t work.&quot;
+                  &quot;The most expensive content is the one that doesn't work.&quot;
                 </motion.p>
               </motion.blockquote>
             </motion.div>
@@ -325,7 +323,7 @@ export default function AboutMe() {
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <Zap className="w-5 h-5" />
-                  Let&apos;s Work Together
+                  Let's Work Together
                   <motion.div
                     animate={prefersReducedMotion ? undefined : { x: [0, 5, 0] }}
                     transition={prefersReducedMotion ? undefined : {
@@ -407,4 +405,3 @@ export default function AboutMe() {
     </section>
   );
 }
-'''

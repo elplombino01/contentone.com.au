@@ -1,4 +1,4 @@
-'''"use client";
+"use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import { motion, useInView, AnimatePresence, useReducedMotion } from "framer-motion";
@@ -324,7 +324,7 @@ export default function ContactForm() {
               variants={itemVariants}
               className="text-xl text-acier-doux font-inter max-w-2xl mx-auto"
             >
-              Let&apos;s discuss how we can help you achieve your goals. Fill out the form below and we&apos;ll get back to you within 24 hours.
+              Let's discuss how we can help you achieve your goals. Fill out the form below and we'll get back to you within 24 hours.
             </motion.p>
           </motion.div>
 
@@ -473,7 +473,7 @@ export default function ContactForm() {
                   )}
                 </motion.div>
 
-                <p className="text-xs text-acier-doux font-inter">Your information is safe. I&apos;ll get back to you within 24 hours.</p>
+                <p className="text-xs text-acier-doux font-inter">Your information is safe. I'll get back to you within 24 hours.</p>
 
                 <motion.button
                   variants={buttonVariants}
@@ -577,7 +577,7 @@ export default function ContactForm() {
                 </div>
                 <Sparkles className="w-10 h-10 text-indigo-electrique mb-4" />
                 <blockquote className="text-xl lg:text-2xl font-satoshi italic text-ivoire-mat leading-relaxed">
-                                    &quot;François is more than a creative director; he&apos;s a genuine growth partner. He took the time to understand our business goals and built a content strategy that delivered an undeniable ROI. Our sales are up, and our brand has never been stronger.&quot;
+                                    &quot;François is more than a creative director; he's a genuine growth partner. He took the time to understand our business goals and built a content strategy that delivered an undeniable ROI. Our sales are up, and our brand has never been stronger.&quot;
                 </blockquote>
               </div>
               <p className="font-satoshi font-semibold text-acier-doux">– Marketing Director, Winplex</p>
@@ -589,4 +589,3 @@ export default function ContactForm() {
     </section>
   );
 }
-'''
