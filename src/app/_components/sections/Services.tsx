@@ -316,7 +316,7 @@ export default function Services() {
                   {step.description}
                 </p>
               </motion.div>
-            )))}
+            ))}
           </div>
         </motion.div>
 
