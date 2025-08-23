@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { motion } from 'framer-motion';
 import { CheckCircle, Zap, BarChart3, Bot } from 'lucide-react';
+import React from 'react'; // Import React for React.ElementType
 
 export const metadata: Metadata = {
   title: "AI-Enhanced Content Strategy | ContentOne",
@@ -16,7 +17,10 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    },
   },
 };
 
@@ -29,7 +33,13 @@ const itemVariants = {
   },
 };
 
-const FeatureCard = ({ icon: Icon, title, children }) => (
+interface FeatureCardProps {
+  icon: React.ElementType; // Type for the icon component
+  title: string;
+  children: React.ReactNode;
+}
+
+const FeatureCard = ({ icon: Icon, title, children }: FeatureCardProps) => (
     <motion.div variants={itemVariants} className="bg-secondary/50 p-6 rounded-xl border border-graphite">
         <div className="flex items-center gap-4 mb-4">
             <div className="bg-indigo-electrique/10 p-3 rounded-full">
