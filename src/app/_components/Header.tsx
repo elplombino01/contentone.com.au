@@ -26,12 +26,12 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = [
+  const navItems = useMemo(() => [
     { name: 'Services', href: '/#services', id: 'services' },
     { name: 'Portfolio', href: '/portfolio', id: 'portfolio' },
     { name: 'Case Studies', href: '/#case-studies', id: 'case-studies' },
     { name: 'Contact', href: '/#contact', id: 'contact' },
-  ];
+  ], []);
 
   useEffect(() => {
     const handleScroll = () => {

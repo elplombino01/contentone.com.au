@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import { motion } from 'framer-motion';
 import { CheckCircle, Zap, BarChart3, Bot } from 'lucide-react';
@@ -61,7 +60,7 @@ export default function ContentStrategyPage() {
             AI-Enhanced Content Strategy
           </motion.h1>
           <motion.p variants={itemVariants} className="text-lg md:text-xl text-acier-doux max-w-3xl mx-auto font-inter">
-            We don't just write content. We build intelligent, data-driven content engines powered by AI to ensure every piece of content serves a purpose and delivers measurable ROI.
+            We don&apos;t just write content. We build intelligent, data-driven content engines powered by AI to ensure every piece of content serves a purpose and delivers measurable ROI.
           </motion.p>
         </div>
       </motion.section>
@@ -83,7 +82,7 @@ export default function ContentStrategyPage() {
                     Go beyond traditional keywords. We use AI to model search intent and identify the topics and questions your audience will have tomorrow, ensuring you capture traffic today and in the future.
                 </FeatureCard>
                 <FeatureCard title="Intelligent Content Mapping" icon={CheckCircle}>
-                    We map every piece of content to a specific stage of the buyer's journey. Our AI-driven approach ensures you deliver the right message to the right person at the right time, maximizing conversion potential.
+                    We map every piece of content to a specific stage of the buyer&apos;s journey. Our AI-driven approach ensures you deliver the right message to the right person at the right time, maximizing conversion potential.
                 </FeatureCard>
                 <FeatureCard title="Performance Forecasting" icon={Bot}>
                     Before we even write a word, our models forecast the potential traffic, engagement, and conversion value of our proposed content strategy, giving you confidence in your investment.
