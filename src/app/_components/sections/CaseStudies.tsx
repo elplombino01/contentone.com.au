@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
+'use client';
+import { useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, TrendingUp, Users, Award, BarChart3, Star, CheckCircle, ExternalLink } from "lucide-react";
 import { Card, CardBody } from "../../_components/primitives/Card";

@@ -4,7 +4,8 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { motion, useInView, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
+'use client';
+import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Send,

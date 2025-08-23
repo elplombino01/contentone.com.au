@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView, useScroll, useTransform, AnimatePresence, useReducedMotion } from "framer-motion";
+'use client';
 import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 import ResultMetric from "../../_components/primitives/ResultMetric";

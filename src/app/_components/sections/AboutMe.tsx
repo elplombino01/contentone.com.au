@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useInView, useScroll, useTransform, useReducedMotion } from "framer-motion";
+'use client';
 import Image from "next/image";
 import { useRef, useState, useEffect, useMemo } from "react";
 import {

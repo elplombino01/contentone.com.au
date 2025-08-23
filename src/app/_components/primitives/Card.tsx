@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { motion } from "framer-motion";
 import { cn } from "../../_lib/utils"; // adjust if your utils path differs
 

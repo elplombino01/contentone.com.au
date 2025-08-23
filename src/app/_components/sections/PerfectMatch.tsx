@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useInView, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { useState, useRef, useId, useEffect, useMemo } from "react";
+'use client';
+import { useRef } from "react";
 import {
   ArrowRight,
   CheckCircle,

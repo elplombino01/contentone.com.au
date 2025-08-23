@@ -1,3 +1,4 @@
+"use client";
 import { Metadata } from 'next';
 import { motion } from 'framer-motion';
 import { CheckCircle, Zap, BarChart3, Bot } from 'lucide-react';
