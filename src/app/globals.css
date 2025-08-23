@@ -385,6 +385,10 @@
     }
   }
 
+  .will-change-transform-opacity {
+    will-change: transform, opacity;
+  }
+
   /* Shadow utilities */
   .shadow-glow {
     box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);

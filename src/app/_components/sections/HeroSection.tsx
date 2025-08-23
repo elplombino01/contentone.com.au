@@ -175,7 +175,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 text-center"
+        className="relative z-10 text-center will-change-transform-opacity"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -193,7 +193,7 @@ export default function HeroSection() {
         {/* Main Title — one-time premium reveal, then calm */}
         <motion.h1
           variants={itemVariants}
-          className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-satoshi font-bold text-ivoire-mat mb-6 leading-tight tracking-tight text-balance"
+          className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-satoshi font-bold text-ivoire-mat mb-6 leading-tight tracking-tight text-balance will-change-transform-opacity"
         >
           <span className="block">
             Your Content Should Perform,

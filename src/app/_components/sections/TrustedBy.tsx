@@ -281,7 +281,7 @@ export default function TrustedBy() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-16 will-change-transform-opacity"
           style={{ y }}
         >
           <div
