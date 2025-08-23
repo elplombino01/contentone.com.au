@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useInView, useScroll, useTransform, useReducedMotion } from "framer-motion";
-'use client';
 import { useRef } from "react";
 import {
   ArrowRight,
