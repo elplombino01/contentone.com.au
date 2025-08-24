@@ -119,14 +119,10 @@ export default function HeroSection() {
   const parallax = calculateParallax(50);
 
   return (
-    <motion.section
+    <section
       ref={heroRef}
       className="relative min-h-screen-dvh flex flex-col items-center justify-center text-center overflow-hidden"
       id="home"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      viewport={{ once: true }}
     >
       <div className="container py-24 md:py-32">
       {/* Premium Ambient Background — simplified and performance-friendly */}
@@ -176,20 +172,26 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div
+      <motion.div
         className="relative z-10 text-center will-change-transform-opacity"
         style={{ y }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        viewport={{ once: true }}
       >
         {/* Badge */}
-        <div
+        <motion.div
+          variants={itemVariants}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-8"
         >
           <Sparkles className="w-4 h-4 text-indigo-electrique" />
           <span className="text-sm font-inter text-indigo-electrique">Performance-Driven Content Agency</span>
-        </div>
+        </motion.div>
 
         {/* Main Title — one-time premium reveal, then calm */}
-        <h1
+        <motion.h1
+          variants={itemVariants}
           className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-satoshi font-bold text-ivoire-mat mb-6 leading-tight tracking-tight text-balance will-change-transform-opacity"
         >
           <span className="block">
@@ -200,10 +202,11 @@ export default function HeroSection() {
                 style={{ WebkitBackgroundClip: "text", backgroundClip: "text" }}>
             Not Just Look Pretty.
           </span>
-        </h1>
+        </motion.h1>
 
         {/* Animated Subtitle with Typing Effect */}
-        <div
+        <motion.div
+          variants={itemVariants}
           className="flex items-center justify-center gap-2 mb-8"
         >
           <div className="h-1 w-12 bg-gradient-to-r from-indigo-electrique to-cyan-electrique rounded-full" />
@@ -215,17 +218,19 @@ export default function HeroSection() {
             <span className="text-gradient">Transforming ideas into measurable results</span>
           </motion.div>
           <div className="h-1 w-12 bg-gradient-to-r from-cyan-electrique to-indigo-electrique rounded-full" />
-        </div>
+        </motion.div>
 
         {/* Description */}
-        <p
+        <motion.p
+          variants={itemVariants}
           className="text-lg md:text-xl lg:text-2xl text-acier-doux mb-12 max-w-[72ch] mx-auto leading-relaxed"
         >
           We blend creative direction, data-driven strategy, and AI-enhanced execution to build your unfair advantage. We don&apos;t just create content—we build content engines that convert.
-        </p>
+        </motion.p>
 
         {/* Feature Icons — calm by default, premium hover */}
-        <div
+        <motion.div
+          variants={itemVariants}
           className="flex justify-center gap-8 mb-12"
           role="list"
           aria-label="Highlighted capabilities"
@@ -253,10 +258,11 @@ export default function HeroSection() {
               </span>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA Buttons */}
-        <div
+        <motion.div
+          variants={itemVariants}
           className="flex flex-col sm:flex-row gap-6 justify-center items-center"
         >
           <Link href="/#contact">
@@ -350,7 +356,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Minimal floating element — parallax only, no loop */}
       <motion.div
@@ -362,6 +368,6 @@ export default function HeroSection() {
         aria-hidden="true"
       />
       </div>
-    </motion.section>
+    </section>
   );
 }
