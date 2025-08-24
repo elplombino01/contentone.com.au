@@ -129,7 +129,7 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-onyx-profond/95 backdrop-blur-lg"
+            className="fixed inset-0 z-50 bg-onyx-profond/95"
           >
             <div className="container mx-auto flex h-20 items-center justify-between px-4">
                 <Link href="/" onClick={() => setIsMenuOpen(false)} className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-electrique/60 rounded-md">
