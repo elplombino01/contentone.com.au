@@ -119,10 +119,14 @@ export default function HeroSection() {
   const parallax = calculateParallax(50);
 
   return (
-    <section
+    <motion.section
       ref={heroRef}
       className="relative min-h-screen-dvh flex flex-col items-center justify-center text-center overflow-hidden"
       id="home"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      viewport={{ once: true }}
     >
       <div className="container py-24 md:py-32">
       {/* Premium Ambient Background — simplified and performance-friendly */}
@@ -172,13 +176,9 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <motion.div
+      <div
         className="relative z-10 text-center will-change-transform-opacity"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
         style={{ y }}
-        viewport={{ once: true }}
       >
         {/* Badge */}
         <div
@@ -350,7 +350,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Minimal floating element — parallax only, no loop */}
       <motion.div
@@ -362,6 +362,6 @@ export default function HeroSection() {
         aria-hidden="true"
       />
       </div>
-    </section>
+    </motion.section>
   );
 }
