@@ -64,7 +64,7 @@ export default function HeroSection() {
         >
           Your Content Should Perform,
           <br />
-          Not Just Look Pretty.
+          <span className="text-gradient">Not Just Look Pretty.</span>
         </motion.h1>
 
         <motion.p 

@@ -471,7 +471,7 @@
   /* Glass effect (desktop only) */
   @media (min-width: 1024px) {
     .glass {
-      background: rgba(31, 31, 31, 0.7);
+      background: rgba(26, 26, 26, 0.8);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(99, 102, 241, 0.2);
