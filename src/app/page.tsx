@@ -1,16 +1,17 @@
 import dynamic from 'next/dynamic';
 
 // Statically import non-interactive or low-risk components
+import HeroSection from "./_components/sections/HeroSection";
 import PerfectMatch from "./_components/sections/PerfectMatch";
 import Services from "./_components/sections/Services";
 import AboutMe from "./_components/sections/AboutMe";
 import ContactForm from "./_components/sections/ContactForm";
 
 // Dynamically import all high-risk, interactive components
-const HeroSection = dynamic(() => import('./_components/sections/HeroSection'), {
-  ssr: false,
-  loading: () => <div style={{ minHeight: '100vh' }} />,
-});
+// const HeroSection = dynamic(() => import('./_components/sections/HeroSection'), {
+//   ssr: false,
+//   loading: () => <div style={{ minHeight: '100vh' }} />,
+// });
 
 const TrustedBy = dynamic(() => import('./_components/sections/TrustedBy'), {
   ssr: false,
