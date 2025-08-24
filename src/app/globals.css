@@ -455,9 +455,7 @@
     animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
-  .animate-blur-in {
-    animation: blurIn 0.8s ease-out;
-  }
+  
 
   /* Text utilities */
 
@@ -470,12 +468,14 @@
     @apply transition-all duration-300 hover:shadow-lg hover:shadow-indigo-electrique/25;
   }
 
-  /* Glass effect */
-  .glass {
-    background: rgba(31, 31, 31, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(99, 102, 241, 0.2);
+  /* Glass effect (desktop only) */
+  @media (min-width: 1024px) {
+    .glass {
+      background: rgba(31, 31, 31, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
   }
 
   /* Shimmer effect */
@@ -535,10 +535,7 @@
   100% { width: 100%; }
 }
 
-@keyframes blurIn {
-  0% { filter: blur(10px); opacity: 0; }
-  100% { filter: blur(0); opacity: 1; }
-}
+
 
 @keyframes fadeIn {
   0% { opacity: 0; }
