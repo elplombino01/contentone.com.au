@@ -90,8 +90,10 @@ const Header = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
-          isScrolled ? 'bg-secondary border-b border-graphite' : 'bg-transparent'
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          isScrolled
+            ? 'border-b border-graphite/60 bg-secondary/80 lg:backdrop-blur-lg'
+            : 'bg-transparent'
         )}
       >
         <div className="container mx-auto flex h-20 items-center justify-between px-4">
