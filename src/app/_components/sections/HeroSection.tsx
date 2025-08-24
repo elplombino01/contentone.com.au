@@ -73,11 +73,10 @@ export default function HeroSection() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 60, filter: "blur(10px)" },
+    hidden: { opacity: 0, y: 60 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: {
         duration: 0.9,
         ease: [0.22, 0.61, 0.36, 1],
@@ -86,11 +85,10 @@ export default function HeroSection() {
   };
 
   const buttonVariants = {
-    hidden: { opacity: 0, scale: 0.75, filter: "blur(8px)" },
+    hidden: { opacity: 0, scale: 0.75 },
     visible: {
       opacity: 1,
       scale: 1,
-      filter: "blur(0px)",
       transition: {
         duration: 0.7,
         delay: 0.9,

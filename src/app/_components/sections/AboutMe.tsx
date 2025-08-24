@@ -103,22 +103,20 @@ export default function AboutMe() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 24, filter: prefersReducedMotion ? "none" : "blur(8px)" },
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 24 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
     },
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, x: prefersReducedMotion ? 0 : 40, scale: prefersReducedMotion ? 1 : 0.95, filter: prefersReducedMotion ? "none" : "blur(8px)" },
+    hidden: { opacity: 0, x: prefersReducedMotion ? 0 : 40, scale: prefersReducedMotion ? 1 : 0.95 },
     visible: {
       opacity: 1,
       x: 0,
       scale: 1,
-      filter: "blur(0px)",
       transition: { duration: 0.7, delay: 0.1, ease: [0.22, 0.61, 0.36, 1] },
     },
   };
