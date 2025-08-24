@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,14 +11,31 @@ if (typeof window !== "undefined") {
 
 export const useGSAPAnimations = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    // Clean up previous animations
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) {
+      // Clean up animations if switching to mobile view
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      return;
+    }
 
     // Animate sections on scroll
-    sectionRefs.current.forEach((section) => {
-      if (!section) return;
+    const triggers = sectionRefs.current.map((section) => {
+      if (!section) return null;
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -58,12 +75,14 @@ export const useGSAPAnimations = () => {
         },
         "-=0.4"
       );
+      
+      return tl.scrollTrigger;
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      triggers.forEach(trigger => trigger?.kill());
     };
-  }, []);
+  }, [isDesktop]);
 
   const addToRefs = (el: HTMLElement | null) => {
     if (el && !sectionRefs.current.includes(el)) {
