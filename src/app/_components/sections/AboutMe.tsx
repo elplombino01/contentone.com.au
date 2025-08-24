@@ -146,16 +146,14 @@ export default function AboutMe() {
             viewport={{ once: true, amount: 0.1 }}
             className="animate-fade-in-up flex flex-col items-center justify-center text-center will-change-transform-opacity-filter"
           >
-            <motion.div
-              variants={itemVariants}
+            <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-6"
             >
               <Zap className="w-4 h-4 text-indigo-electrique" aria-hidden="true" />
               <span className="text-sm font-inter text-indigo-electrique">Meet The Founder</span>
-            </motion.div>
+            </div>
             
-            <motion.h2
-              variants={itemVariants}
+            <h2
               className="text-4xl md:text-5xl font-satoshi font-bold text-ivoire-mat mb-6"
             >
               <span className="inline-flex items-center">
@@ -165,27 +163,22 @@ export default function AboutMe() {
                 </svg>
                 <span>You&apos;re Not Hiring an Agency. <span className="text-gradient" style={{ WebkitBackgroundClip: "text", backgroundClip: "text" }}>You&apos;re Partnering with Me.</span></span>
               </span>
-            </motion.h2>
+            </h2>
             
-            <motion.p
-              variants={itemVariants}
+            <p
               className="text-lg text-acier-doux font-inter leading-relaxed mb-6 max-w-[72ch] text-pretty"
             >
               Based in Melbourne, I’m François Vaccarello. For over 15 years, I&apos;ve directed content for brands big and small, and I&apos;ve learned one thing: creative work must do more than look good—it must work.
-            </motion.p>
+            </p>
 
-            <motion.p
-              variants={itemVariants}
+            <p
               className="text-lg text-acier-doux font-inter leading-relaxed mb-6 max-w-[72ch] text-pretty"
             >
               I founded ContentOne to be a new kind of creative partner. We&apos;re a team of performance-obsessed content nerds who blend deep visual instincts with real marketing know-how. We&apos;re here to build your content machine.
-            </motion.p>
+            </p>
 
-            <motion.div
-              variants={itemVariants}
+            <div
               className="relative mb-8"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
             >
               <motion.div
                 className="absolute -left-4 -top-4 text-indigo-electrique opacity-20"
@@ -215,7 +208,7 @@ export default function AboutMe() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   style={{ transformOrigin: "left" }}
                 />
-                <motion.p
+                <p
                   className="text-2xl font-satoshi italic leading-relaxed"
                   style={{
                     background: "linear-gradient(90deg, #F8F8F8, #6366F1, #06B6D4, #F8F8F8)",
@@ -226,29 +219,26 @@ export default function AboutMe() {
                   }}
                 >
                   &quot;The most expensive content is the one that doesn&apos;t work.&quot;
-                </motion.p>
+                </p>
               </motion.blockquote>
-            </motion.div>
+            </div>
 
-            <motion.p
-              variants={itemVariants}
+            <p
               className="text-lg text-acier-doux font-inter leading-relaxed mb-8 max-w-[72ch] text-pretty"
             >
               My mission is simple: help ambitious brands transform their content from a cost center
               into a profit engine. I work exclusively with companies ready to invest in strategies
               that scale, not just tactics that look good on paper.
-            </motion.p>
+            </p>
 
-            <motion.div
-              variants={containerVariants}
+            <div
               className="grid grid-cols-3 gap-4 mb-8 text-center justify-center"
               role="list"
             >
               {stats.map((stat) => (
-                <motion.button
+                <button
                   key={stat.label}
                   type="button"
-                  variants={itemVariants}
                   onMouseEnter={() => setHoveredStat(stat.label)}
                   onMouseLeave={() => setHoveredStat(null)}
                   className="card p-4 relative overflow-hidden focus-visible:ring-2 focus-visible:ring-indigo-electrique"
@@ -272,11 +262,11 @@ export default function AboutMe() {
                       aria-hidden="true"
                     />
                   )}
-                </motion.button>
+                </button>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div variants={itemVariants} className="text-center">
+            <div className="text-center">
               <h3 className="text-xl md:text-2xl xl:text-3xl font-satoshi font-semibold text-ivoire-mat mb-4">
                 <span className="inline-flex items-center">
                   <svg className="w-4 h-4 mr-2 align-middle opacity-60 text-indigo-electrique" aria-hidden="true" viewBox="0 0 24 24" fill="none">
@@ -302,10 +292,9 @@ export default function AboutMe() {
                   </button>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={itemVariants}
+            <div
               className="mt-8 text-center"
             >
               <motion.button
@@ -339,7 +328,7 @@ export default function AboutMe() {
                 />
                 <ButtonParticles reduceMotion={prefersReducedMotion} />
               </motion.button>
-            </motion.div>
+            </div>
           </motion.div>
 
           <motion.div

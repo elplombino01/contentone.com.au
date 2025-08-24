@@ -255,7 +255,7 @@ export default function TrustedBy() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
         >
           {stats.map((stat, index) => (
-            <motion.div key={stat.label} variants={statVariants} className="cursor-default">
+            <motion.div key={stat.label} variants={statVariants} className="cursor-default" viewport={{ once: true }}>
               <div className="flex justify-center mb-4">
                 <motion.div
                   animate={reduceMotion ? undefined : { rotate: [0, 10, -10, 0], scale: [1, 1.05, 1] }}

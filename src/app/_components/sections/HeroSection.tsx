@@ -138,7 +138,7 @@ export default function HeroSection() {
           className="absolute inset-0 opacity-[0.08] mix-blend-soft-light pointer-events-none"
           style={{
             backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E\")",
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")",
             backgroundSize: "160px 160px",
           }}
         />
@@ -178,19 +178,18 @@ export default function HeroSection() {
         initial="hidden"
         animate="visible"
         style={{ y }}
+        viewport={{ once: true }}
       >
         {/* Badge */}
-        <motion.div
-          variants={itemVariants}
+        <div
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-8"
         >
           <Sparkles className="w-4 h-4 text-indigo-electrique" />
           <span className="text-sm font-inter text-indigo-electrique">Performance-Driven Content Agency</span>
-        </motion.div>
+        </div>
 
         {/* Main Title — one-time premium reveal, then calm */}
-        <motion.h1
-          variants={itemVariants}
+        <h1
           className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-satoshi font-bold text-ivoire-mat mb-6 leading-tight tracking-tight text-balance will-change-transform-opacity"
         >
           <span className="block">
@@ -201,11 +200,10 @@ export default function HeroSection() {
                 style={{ WebkitBackgroundClip: "text", backgroundClip: "text" }}>
             Not Just Look Pretty.
           </span>
-        </motion.h1>
+        </h1>
 
         {/* Animated Subtitle with Typing Effect */}
-        <motion.div
-          variants={itemVariants}
+        <div
           className="flex items-center justify-center gap-2 mb-8"
         >
           <div className="h-1 w-12 bg-gradient-to-r from-indigo-electrique to-cyan-electrique rounded-full" />
@@ -217,24 +215,22 @@ export default function HeroSection() {
             <span className="text-gradient">Transforming ideas into measurable results</span>
           </motion.div>
           <div className="h-1 w-12 bg-gradient-to-r from-cyan-electrique to-indigo-electrique rounded-full" />
-        </motion.div>
+        </div>
 
         {/* Description */}
-        <motion.p
-          variants={itemVariants}
+        <p
           className="text-lg md:text-xl lg:text-2xl text-acier-doux mb-12 max-w-[72ch] mx-auto leading-relaxed"
         >
           We blend creative direction, data-driven strategy, and AI-enhanced execution to build your unfair advantage. We don&apos;t just create content—we build content engines that convert.
-        </motion.p>
+        </p>
 
         {/* Feature Icons — calm by default, premium hover */}
-        <motion.div
-          variants={itemVariants}
+        <div
           className="flex justify-center gap-8 mb-12"
           role="list"
           aria-label="Highlighted capabilities"
         >
-          {[
+          {[ 
             { icon: Code, label: "Development" },
             { icon: Palette, label: "Design" },
             { icon: BarChart3, label: "Analytics" },
@@ -242,7 +238,7 @@ export default function HeroSection() {
           ].map((item, index) => (
             <div key={item.label} className="flex flex-col items-center gap-2 group" role="listitem">
               <div
-                className={`p-3 rounded-full transition-all duration-300 ${
+                className={`p-3 rounded-full transition-all duration-300 ${ 
                   activeIcon === index
                     ? "bg-gradient-to-br from-indigo-electrique to-cyan-electrique"
                     : "bg-secondary border border-indigo-electrique/30"
@@ -250,18 +246,17 @@ export default function HeroSection() {
               >
                 <item.icon className={`w-6 h-6 ${activeIcon === index ? "text-ivoire-mat" : "text-indigo-electrique"}`} />
               </div>
-              <span className={`text-sm font-inter transition-colors ${
+              <span className={`text-sm font-inter transition-colors ${ 
                 activeIcon === index ? "text-ivoire-mat" : "text-acier-doux group-hover:text-ivoire-mat"
               }`}>
                 {item.label}
               </span>
             </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
+        <div
           className="flex flex-col sm:flex-row gap-6 justify-center items-center"
         >
           <Link href="/#contact">
@@ -323,7 +318,7 @@ export default function HeroSection() {
               />
             </motion.button>
           </Link>
-        </motion.div>
+        </div>
 
         {/* Scroll Indicator */}
         <motion.div

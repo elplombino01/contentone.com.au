@@ -273,6 +273,7 @@ export default function Services() {
           <motion.div
             variants={itemVariants}
             className="text-center mb-12"
+            viewport={{ once: true }}
           >
             <h3 className="text-3xl font-satoshi font-bold text-ivoire-mat mb-4" id="services-process-heading">
               Our <span className="text-gradient bg-gradient-to-r from-indigo-electrique to-cyan-electrique bg-clip-text text-transparent">Process</span>
@@ -293,6 +294,7 @@ export default function Services() {
                 role="listitem"
                 aria-label={`${index + 1}. ${step.title} — ${step.description}`}
                 tabIndex={0}
+                viewport={{ once: true }}
               >
                 <div className="relative mb-6">
                   <motion.div

@@ -352,81 +352,82 @@ export default function ContactForm() {
                 aria-describedby="contact-privacy-note"
                 noValidate
               >
-                {formFields.map((field, index) => (
-                  <motion.div
-                    key={field.id}
-                    variants={formFieldVariants}
-                    className="relative"
-                  >
-                    <label
-                      htmlFor={field.id}
-                      className={`block text-sm font-medium mb-2 font-inter flex items-center gap-2 transition-colors duration-200 ${
-                        focusedField === field.id
-                          ? "text-indigo-electrique"
-                          : "text-acier-doux"
-                      }`}
+                <motion.div variants={formFieldVariants}>
+                  {formFields.map((field, index) => (
+                    <div
+                      key={field.id}
+                      className="relative mb-6"
                     >
-                      <field.icon className="w-4 h-4" />
-                      {field.label}
-                    </label>
-                    
-                    {field.type === "select" ? (
-                      <select
-                        {...field.register}
-                        id={field.id}
-                        onFocus={() => setFocusedField(field.id)}
-                        onBlur={() => setFocusedField(null)}
-                        className="input"
-                        aria-invalid={!!field.error}
-                        aria-describedby={field.error ? `${field.id}-error` : undefined}
-                        defaultValue=""
+                      <label
+                        htmlFor={field.id}
+                        className={`block text-sm font-medium mb-2 font-inter flex items-center gap-2 transition-colors duration-200 ${
+                          focusedField === field.id
+                            ? "text-indigo-electrique"
+                            : "text-acier-doux"
+                        }`}
                       >
-                        <option value="" disabled>{field.placeholder}</option>
-                        {field.options?.map(opt => (
-                          <option key={opt.value} value={opt.value}>{opt.label}</option>
-                        ))}
-                      </select>
-                    ) : (
-                      <input
-                        {...field.register}
-                        type={field.type}
-                        id={field.id}
-                        onFocus={() => setFocusedField(field.id)}
-                        onBlur={() => setFocusedField(null)}
-                        className="input"
-                        placeholder={field.placeholder}
-                        aria-invalid={!!field.error}
-                        aria-describedby={field.error ? `${field.id}-error` : undefined}
-                        inputMode={field.id === "email" ? "email" : "text"}
-                        autoComplete={field.id === "email" ? "email" : field.id === "name" ? "name" : field.id === "company" ? "organization" : "on"}
+                        <field.icon className="w-4 h-4" />
+                        {field.label}
+                      </label>
+                      
+                      {field.type === "select" ? (
+                        <select
+                          {...field.register}
+                          id={field.id}
+                          onFocus={() => setFocusedField(field.id)}
+                          onBlur={() => setFocusedField(null)}
+                          className="input"
+                          aria-invalid={!!field.error}
+                          aria-describedby={field.error ? `${field.id}-error` : undefined}
+                          defaultValue=""
+                        >
+                          <option value="" disabled>{field.placeholder}</option>
+                          {field.options?.map(opt => (
+                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        <input
+                          {...field.register}
+                          type={field.type}
+                          id={field.id}
+                          onFocus={() => setFocusedField(field.id)}
+                          onBlur={() => setFocusedField(null)}
+                          className="input"
+                          placeholder={field.placeholder}
+                          aria-invalid={!!field.error}
+                          aria-describedby={field.error ? `${field.id}-error` : undefined}
+                          inputMode={field.id === "email" ? "email" : "text"}
+                          autoComplete={field.id === "email" ? "email" : field.id === "name" ? "name" : field.id === "company" ? "organization" : "on"}
+                        />
+                      )}
+                      {!isInView && (
+                        <div className="absolute inset-0 rounded-lg pointer-events-none">
+                          <div className="skeleton w-full h-full rounded-lg" aria-hidden="true" />
+                        </div>
+                      )}
+                      
+                      <motion.div
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-electrique to-cyan-electrique rounded-full"
+                        initial={{ scaleX: 0 }}
+                        animate={reduceMotion ? undefined : { scaleX: focusedField === field.id ? 1 : 0 }}
+                        transition={reduceMotion ? undefined : { duration: 0.3 }}
                       />
-                    )}
-                    {!isInView && (
-                      <div className="absolute inset-0 rounded-lg pointer-events-none">
-                        <div className="skeleton w-full h-full rounded-lg" aria-hidden="true" />
-                      </div>
-                    )}
-                    
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-indigo-electrique to-cyan-electrique rounded-full"
-                      initial={{ scaleX: 0 }}
-                      animate={reduceMotion ? undefined : { scaleX: focusedField === field.id ? 1 : 0 }}
-                      transition={reduceMotion ? undefined : { duration: 0.3 }}
-                    />
-                    
-                    {field.error && (
-                      <motion.p
-                        id={`${field.id}-error`}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="mt-2 text-sm text-red-400 font-inter"
-                        role="alert"
-                      >
-                        {field.error.message}
-                      </motion.p>
-                    )}
-                  </motion.div>
-                ))}
+                      
+                      {field.error && (
+                        <motion.p
+                          id={`${field.id}-error`}
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="mt-2 text-sm text-red-400 font-inter"
+                          role="alert"
+                        >
+                          {field.error.message}
+                        </motion.p>
+                      )}
+                    </div>
+                  ))}
+                </motion.div>
 
                 <motion.div variants={formFieldVariants} className="relative">
                   <label

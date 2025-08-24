@@ -280,6 +280,7 @@ export default function PerfectMatch() {
                 layout
                 role="listitem"
                 className={`${card.span} group relative overflow-hidden rounded-xl p-1 ${selectedCard === card.id ? 'md:col-span-6 z-10' : ''}`}
+                viewport={{ once: true }}
               >
                 {/* Card background with gradient border */}
                 <div
