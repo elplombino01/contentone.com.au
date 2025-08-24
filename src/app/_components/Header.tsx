@@ -92,7 +92,7 @@ const Header = () => {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isScrolled
-            ? 'border-b border-graphite/60 bg-secondary/80 lg:backdrop-blur-lg'
+            ? 'border-b border-graphite/60 bg-black/80 lg:backdrop-blur-lg'
             : 'bg-transparent'
         )}
       >
