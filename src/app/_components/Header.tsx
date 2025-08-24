@@ -34,7 +34,7 @@ export default function Header() {
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
-  }, [pathname]);
+  }, [pathname, isMobileMenuOpen]);
   
   // Prevent body scroll when mobile menu is open
   useEffect(() => {

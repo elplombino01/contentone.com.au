@@ -69,7 +69,7 @@ export default function ContactForm() {
             >
                 <h2 className="text-4xl md:text-5xl font-bold font-satoshi mb-4 text-ivoire-mat">Ready to Build Content That Works?</h2>
                 <p className="text-lg text-acier-doux mb-12">
-                    Let's discuss how we can help you achieve your goals. Fill out the form below and we'll get back to you within 24 hours.
+                    Let&apos;s discuss how we can help you achieve your goals. Fill out the form below and we&apos;ll get back to you within 24 hours.
                 </p>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-left">
@@ -109,7 +109,7 @@ export default function ContactForm() {
                         {errors.message && <p className="text-red-400 mt-1 text-sm">{errors.message.message}</p>}
                     </div>
 
-                    <p className="text-xs text-acier-doux text-center">Your information is safe. I'll get back to you within 24 hours.</p>
+                    <p className="text-xs text-acier-doux text-center">Your information is safe. I&apos;ll get back to you within 24 hours.</p>
 
                     <motion.button 
                         type="submit" 
