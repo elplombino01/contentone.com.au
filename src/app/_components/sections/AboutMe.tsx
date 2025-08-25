@@ -60,7 +60,7 @@ function ButtonParticles({ reduceMotion }: { reduceMotion: boolean | null }) {
           }}
           transition={{
             duration: p.duration,
-            repeat: Infinity,
+            repeat: 1,
             repeatDelay: p.repeatDelay,
           }}
         />
@@ -187,7 +187,6 @@ export default function AboutMe() {
                 }}
                 transition={{
                   duration: 6,
-                  repeat: Infinity,
                   ease: "easeInOut",
                 }}
               >
@@ -315,7 +314,6 @@ export default function AboutMe() {
                     animate={prefersReducedMotion ? undefined : { x: [0, 5, 0] }}
                     transition={prefersReducedMotion ? undefined : {
                       duration: 1.5,
-                      repeat: Infinity,
                       repeatType: "reverse"
                     }}
                   >

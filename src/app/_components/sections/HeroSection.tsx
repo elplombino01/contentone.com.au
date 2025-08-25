@@ -103,20 +103,7 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator - simplified for performance */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div 
-          className="flex flex-col items-center cursor-pointer group"
-          onClick={() => {
-            document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <span className="text-sm text-acier-doux mb-2 group-hover:text-ivoire-mat transition-colors">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-indigo-electrique/50 rounded-full flex justify-center group-hover:border-indigo-electrique transition-colors">
-            <div className="w-1 h-3 bg-indigo-electrique rounded-full animate-bounce mt-1" />
-          </div>
-        </div>
-      </div>
+      
     </section>
   );
 }

@@ -94,16 +94,7 @@ export default function TrustedBy() {
     }
   }, [isInView]);
 
-  // Auto-rotate testimonials
-  useEffect(() => {
-    if (!isInView) return;
-    
-    const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, [isInView]);
+  
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -259,7 +250,7 @@ export default function TrustedBy() {
               <div className="flex justify-center mb-4">
                 <motion.div
                   animate={reduceMotion ? undefined : { rotate: [0, 10, -10, 0], scale: [1, 1.05, 1] }}
-                  transition={reduceMotion ? undefined : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  transition={reduceMotion ? undefined : { duration: 4, ease: "easeInOut" }}
                 >
                   <stat.icon className="w-10 h-10 text-indigo-electrique" />
                 </motion.div>
@@ -291,7 +282,7 @@ export default function TrustedBy() {
           >
             <div
               className="flex items-center gap-8 pr-8 will-change-transform"
-              style={reduceMotion ? undefined : { animation: "marquee 28s linear infinite" }}
+              style={reduceMotion ? undefined : { }}
               onMouseEnter={(e) => {
                 if (reduceMotion) return;
                 const track = e.currentTarget as HTMLElement;

@@ -119,7 +119,7 @@ export default function ContactForm() {
                         whileTap={{ scale: 0.95 }}
                     >
                         {isSubmitting ? (
-                            <span className="flex items-center justify-center"> <Send className="w-5 h-5 mr-2 animate-spin" /> Submitting...</span>
+                            <span className="flex items-center justify-center"> <Send className="w-5 h-5 mr-2" /> Submitting...</span>
                         ) : (
                             <span className="flex items-center justify-center">Claim My Free Growth Strategy <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" /></span>
                         )}

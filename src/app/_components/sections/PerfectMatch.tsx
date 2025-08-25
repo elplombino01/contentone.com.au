@@ -479,7 +479,7 @@ function ClientParticles({ reduceMotion }: { reduceMotion: boolean }) {
           }}
           transition={{
             duration: p.duration,
-            repeat: Infinity,
+            repeat: 1,
             repeatType: "reverse",
           }}
         />
@@ -530,7 +530,7 @@ function ClientHoverParticles({ reduceMotion }: { reduceMotion: boolean }) {
           }}
           transition={{
             duration: p.duration,
-            repeat: Infinity,
+            repeat: 1,
             repeatDelay: p.delay,
           }}
         />
