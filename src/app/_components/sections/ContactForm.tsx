@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
-import { Send, ArrowRight } from "lucide-react";
+import { Send, ArrowRight, User, Mail, Building2, DollarSign, MessageSquare, CheckCircle, AlertTriangle } from "lucide-react";
 
 const contactSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -20,6 +20,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const {
     register,
@@ -73,39 +74,55 @@ export default function ContactForm() {
                 </p>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-left">
-                    <div>
-                        <label htmlFor="fullName" className="block text-sm font-medium text-acier-doux mb-2">Full Name *</label>
-                        <input id="fullName" type="text" placeholder="John Doe" {...register("fullName")} className="input" />
-                        {errors.fullName && <p className="text-red-400 mt-1 text-sm">{errors.fullName.message}</p>}
-                    </div>
-
-                    <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-acier-doux mb-2">Email Address *</label>
-                        <input id="email" type="email" placeholder="john@company.com" {...register("email")} className="input" />
-                        {errors.email && <p className="text-red-400 mt-1 text-sm">{errors.email.message}</p>}
+                    <div className="grid md:grid-cols-2 md:gap-6">
+                        <div>
+                            <label htmlFor="fullName" className="block text-sm font-medium text-acier-doux mb-2">Full Name *</label>
+                            <div className="relative">
+                                <User className={`absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'fullName' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
+                                <input id="fullName" type="text" placeholder="John Doe" {...register("fullName")} className="input pl-10" onFocus={() => setFocusedField('fullName')} onBlur={() => setFocusedField(null)} />
+                            </div>
+                            {errors.fullName && <p className="text-red-400 mt-1 text-sm">{errors.fullName.message}</p>}
+                        </div>
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium text-acier-doux mb-2">Email Address *</label>
+                            <div className="relative">
+                                <Mail className={`absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'email' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
+                                <input id="email" type="email" placeholder="john@company.com" {...register("email")} className="input pl-10" onFocus={() => setFocusedField('email')} onBlur={() => setFocusedField(null)} />
+                            </div>
+                            {errors.email && <p className="text-red-400 mt-1 text-sm">{errors.email.message}</p>}
+                        </div>
                     </div>
 
                     <div>
                         <label htmlFor="companyName" className="block text-sm font-medium text-acier-doux mb-2">Company Name *</label>
-                        <input id="companyName" type="text" placeholder="Your Company" {...register("companyName")} className="input" />
+                        <div className="relative">
+                            <Building2 className={`absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'companyName' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
+                            <input id="companyName" type="text" placeholder="Your Company" {...register("companyName")} className="input pl-10" onFocus={() => setFocusedField('companyName')} onBlur={() => setFocusedField(null)} />
+                        </div>
                         {errors.companyName && <p className="text-red-400 mt-1 text-sm">{errors.companyName.message}</p>}
                     </div>
 
                     <div>
                         <label htmlFor="budget" className="block text-sm font-medium text-acier-doux mb-2">Budget Range *</label>
-                        <select id="budget" {...register("budget")} className="input">
-                            <option value="" disabled>Select budget range</option>
-                            <option value="5k-10k">$5,000 - $10,000</option>
-                            <option value="10k-25k">$10,000 - $25,000</option>
-                            <option value="25k-50k">$25,000 - $50,000</option>
-                            <option value="50k+">$50,000+</option>
-                        </select>
+                        <div className="relative">
+                            <DollarSign className={`absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'budget' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
+                            <select id="budget" {...register("budget")} className="input pl-10" onFocus={() => setFocusedField('budget')} onBlur={() => setFocusedField(null)}>
+                                <option value="" disabled>Select budget range</option>
+                                <option value="5k-10k">$5,000 - $10,000</option>
+                                <option value="10k-25k">$10,000 - $25,000</option>
+                                <option value="25k-50k">$25,000 - $50,000</option>
+                                <option value="50k+">$50,000+</option>
+                            </select>
+                        </div>
                         {errors.budget && <p className="text-red-400 mt-1 text-sm">{errors.budget.message}</p>}
                     </div>
 
                     <div>
                         <label htmlFor="message" className="block text-sm font-medium text-acier-doux mb-2">How can we help you?</label>
-                        <textarea id="message" rows={4} placeholder="Tell us about your project..." {...register("message")} className="input resize-none"></textarea>
+                        <div className="relative">
+                            <MessageSquare className={`absolute left-3 top-3 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'message' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
+                            <textarea id="message" rows={4} placeholder="Tell us about your project..." {...register("message")} className="input resize-none pl-10" onFocus={() => setFocusedField('message')} onBlur={() => setFocusedField(null)}></textarea>
+                        </div>
                         {errors.message && <p className="text-red-400 mt-1 text-sm">{errors.message.message}</p>}
                     </div>
 
@@ -125,8 +142,18 @@ export default function ContactForm() {
                         )}
                     </motion.button>
 
-                    {submitStatus === 'success' && <p className="text-emerald-400 text-center">Thank you for your message. We will get back to you shortly.</p>}
-                    {submitStatus === 'error' && <p className="text-red-400 text-center">An error occurred. Please try again later.</p>}
+                    {submitStatus === 'success' && (
+                        <div className="flex items-center justify-center text-emerald-400">
+                            <CheckCircle className="w-5 h-5 mr-2" />
+                            <p>Thank you for your message. We will get back to you shortly.</p>
+                        </div>
+                    )}
+                    {submitStatus === 'error' && (
+                        <div className="flex items-center justify-center text-red-400">
+                            <AlertTriangle className="w-5 h-5 mr-2" />
+                            <p>An error occurred. Please try again later.</p>
+                        </div>
+                    )}
                 </form>
             </motion.div>
         </div>

@@ -62,6 +62,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 // Replace self-hosted @font-face with next/font (Google Inter as primary UI font)
@@ -220,14 +223,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${satoshi.variable}`}>
       <head>
         {/* PWA / Icons */}
-        {/* Favicons */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        {/* Prefer high-DPI SVG for modern browsers */}
-        <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
-        {/* PNG fallbacks for platforms that require raster icons */}
-        <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        
         <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials" />
         {/* Canonical */}
         <link rel="canonical" href="https://contentone.com.au" />
