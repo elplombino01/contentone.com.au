@@ -149,7 +149,7 @@ export default function AboutMe() {
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-6"
             >
-              <Zap className="w-4 h-4 text-indigo-electrique" aria-hidden="true" />
+              <Zap className="section-title-icon text-indigo-electrique" aria-hidden="true" />
               <span className="text-sm font-inter text-indigo-electrique">Meet The Founder</span>
             </div>
             
@@ -157,7 +157,7 @@ export default function AboutMe() {
               className="text-4xl md:text-5xl font-satoshi font-bold text-ivoire-mat mb-6"
             >
               <span className="inline-flex items-center">
-                <svg className="w-5 h-5 mr-2 align-middle opacity-80 text-indigo-electrique" aria-hidden="true" viewBox="0 0 24 24" fill="none" focusable="false">
+                <svg className="section-title-icon align-middle opacity-80 text-indigo-electrique" aria-hidden="true" viewBox="0 0 24 24" fill="none" focusable="false">
                   <path d="M12 22s8-4 8-10V7l-8-5-8 5v5c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -181,7 +181,7 @@ export default function AboutMe() {
               className="relative mb-8"
             >
               <motion.div
-                className="absolute -left-4 -top-4 text-indigo-electrique opacity-20"
+                className="absolute -left-4 -top-4 text-indigo-electrique opacity-20 ml-4"
                 animate={{
                   rotate: [0, 5, -5, 0],
                 }}
@@ -231,7 +231,7 @@ export default function AboutMe() {
             </p>
 
             <div
-              className="grid grid-cols-3 gap-4 mb-8 text-center justify-center"
+              className="grid grid-cols-3 gap-4 mb-8 text-center justify-center items-stretch"
               role="list"
             >
               {stats.map((stat) => (
@@ -249,7 +249,7 @@ export default function AboutMe() {
                       <stat.icon className="w-6 h-6 text-indigo-electrique" aria-hidden="true" />
                     </div>
                     <div className="text-2xl font-satoshi font-bold mb-1 text-ivoire-mat">{stat.value}</div>
-                    <div className="text-sm font-inter text-acier-doux">{stat.label}</div>
+                    <div className="text-base font-inter text-acier-doux">{stat.label}</div>
                   </div>
                   {!prefersReducedMotion && hoveredStat === stat.label && (
                     <motion.div
@@ -268,7 +268,7 @@ export default function AboutMe() {
             <div className="text-center">
               <h3 className="text-xl md:text-2xl xl:text-3xl font-satoshi font-semibold text-ivoire-mat mb-4">
                 <span className="inline-flex items-center">
-                  <svg className="w-4 h-4 mr-2 align-middle opacity-60 text-indigo-electrique" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <svg className="section-title-icon align-middle opacity-60 text-indigo-electrique" aria-hidden="true" viewBox="0 0 24 24" fill="none">
                     <path d="M13 2H6a2 2 0 0 0-2 2v13l4-4h9a2 2 0 0 0 2-2V7l-6-5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <span>Areas of Expertise</span>

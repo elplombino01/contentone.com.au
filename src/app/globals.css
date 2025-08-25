@@ -167,7 +167,6 @@
     content: "";
     @apply absolute inset-0 rounded-lg;
     background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-    animation: shimmer 1.4s linear infinite;
   }
 
   .btn-success {
@@ -244,6 +243,10 @@
 
   .section-small {
     @apply py-16 md:py-24;
+  }
+
+  .section-title-icon {
+    @apply w-6 h-6 mr-2;
   }
 
   /* Container component */

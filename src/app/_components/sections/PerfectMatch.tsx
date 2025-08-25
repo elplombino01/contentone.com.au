@@ -240,7 +240,7 @@ export default function PerfectMatch() {
             variants={itemVariants}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-6"
           >
-            <Sparkles className="w-4 h-4 text-indigo-electrique" />
+            <Sparkles className="section-title-icon text-indigo-electrique" />
             <span className="text-sm font-inter text-indigo-electrique">Find Your Perfect Match</span>
           </motion.div>
           
@@ -253,7 +253,7 @@ export default function PerfectMatch() {
           
           <motion.p
             variants={itemVariants}
-            className="text-xl md:text-2xl text-acier-doux font-inter max-w-[72ch] text-pretty mx-auto"
+            className="text-lg md:text-xl text-acier-doux font-inter max-w-[72ch] text-pretty mx-auto"
           >
             You recognize these challenges and want to turn them into opportunities
           </motion.p>

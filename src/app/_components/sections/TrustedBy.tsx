@@ -36,7 +36,7 @@ const stats = [
 
 const testimonials = [
   {
-    quote: "Working with ContentOne transformed our content strategy from a cost center to a revenue driver. The results speak for themselves - 250% growth in just 6 months.",
+    quote: "ContentOne transformed our content strategy into a revenue driver, delivering 250% growth in just 6 months.",
     author: "Sarah Johnson",
     role: "CMO, TechCorp",
     avatar: "/avatars/sarah-johnson.jpg"
@@ -182,7 +182,7 @@ export default function TrustedBy() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 md:py-32 bg-gradient-to-br from-onyx-profond via-secondary to-onyx-profond relative overflow-hidden"
+      className="py-20 md:py-32 bg-gradient-to-br from-onyx-profond via-secondary to-onyx-profond relative overflow-hidden"
       id="trusted-by"
     >
       {/* Background decoration — simplified, no perpetual particles */}
@@ -206,7 +206,7 @@ export default function TrustedBy() {
             variants={itemVariants}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-6"
           >
-            <Sparkles className="w-4 h-4 text-indigo-electrique opacity-90 align-middle" />
+            <Sparkles className="section-title-icon text-indigo-electrique opacity-90 align-middle" />
             <span className="text-sm font-inter text-indigo-electrique">Trusted by Industry Leaders</span>
           </motion.div>
           
@@ -215,7 +215,7 @@ export default function TrustedBy() {
             className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl leading-tight font-satoshi font-bold text-ivoire-mat mb-6"
           >
             <span className="inline-flex items-center">
-              <svg className="w-4 h-4 mr-2 align-middle opacity-90 text-indigo-electrique" aria-hidden="true" viewBox="0 0 24 24" fill="none" focusable="false">
+              <svg className="section-title-icon align-middle opacity-90 text-indigo-electrique" aria-hidden="true" viewBox="0 0 24 24" fill="none" focusable="false">
                 <path d="M12 22s8-4 8-10V7l-8-5-8 5v5c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -231,7 +231,7 @@ export default function TrustedBy() {
           
           <motion.p
             variants={itemVariants}
-            className="text-xl text-acier-doux font-inter max-w-[72ch] mx-auto"
+            className="text-lg md:text-xl text-acier-doux font-inter max-w-[72ch] mx-auto"
           >
             Join the companies that have transformed their content performance and achieved remarkable growth
           </motion.p>
