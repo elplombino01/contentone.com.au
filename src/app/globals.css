@@ -246,7 +246,7 @@
   }
 
   .section-title-icon {
-    @apply w-6 h-6 mr-2 flex-shrink-0;
+    @apply w-6 h-6 mr-3 flex-shrink-0;
   }
 
   /* Container component */
@@ -259,20 +259,7 @@
     @apply font-inter text-acier-doux hover:text-ivoire-mat transition-colors duration-200 relative;
   }
 
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--indigo-electrique);
-    transition: width 0.3s ease;
-  }
-
-  .nav-link:hover::after {
-    width: 100%;
-  }
+  
 }
 
 @layer utilities {

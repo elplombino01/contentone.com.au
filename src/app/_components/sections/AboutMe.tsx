@@ -220,7 +220,7 @@ export default function AboutMe() {
             </p>
 
             <div
-              className="grid grid-cols-3 gap-4 mb-8 text-center justify-center items-stretch"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-center justify-center items-stretch"
               role="list"
             >
               {stats.map((stat) => (
