@@ -5,17 +5,38 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
-import { Send, ArrowRight, User, Mail, Building2, DollarSign, MessageSquare, CheckCircle, AlertTriangle } from "lucide-react";
+import { Send, User, Mail, Briefcase, MessageSquare, CheckCircle, AlertTriangle } from "lucide-react";
 
+// Zod schema for form validation
 const contactSchema = z.object({
-  fullName: z.string().min(2, "Full name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  companyName: z.string().min(2, "Company name must be at least 2 characters"),
-  budget: z.string().min(1, "Please select a budget range"),
-  message: z.string().min(10, "Your message must be at least 10 characters"),
+  fullName: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email"),
+  companyName: z.string().min(2, "Company name is required"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
+
+// Reusable input field component for consistency
+const FormInput = ({ id, icon: Icon, label, register, error, placeholder, onFocus, onBlur, focusedField }) => (
+  <div>
+    <label htmlFor={id} className="sr-only">{label}</label>
+    <div className="relative">
+      <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+        <Icon className={`h-5 w-5 transition-colors ${focusedField === id ? 'text-indigo-electrique' : 'text-gray-400'}`} />
+      </div>
+      <input
+        id={id}
+        {...register(id)}
+        placeholder={placeholder}
+        className="w-full pl-12 pr-4 py-3 bg-onyx-profond border border-gris-acier rounded-lg text-ivoire-mat placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-electrique focus:border-transparent"
+        onFocus={() => onFocus(id)}
+        onBlur={() => onBlur(null)}
+      />
+    </div>
+    {error && <p className="mt-2 text-sm text-red-400">{error.message}</p>}
+  </div>
+);
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,129 +55,143 @@ export default function ContactForm() {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    // Mock submission for now
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log(data);
-    // In a real app, you would send this data to an API endpoint.
-    // For this example, we'll just simulate success.
-    setSubmitStatus('success');
-    setIsSubmitting(false);
-    reset();
-  };
+    try {
+      // Replace with your actual API endpoint
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 0.61, 0.36, 1],
-        staggerChildren: 0.15,
-      },
-    },
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+
+      setSubmitStatus('success');
+      reset();
+    } catch (error) {
+      console.error("Submission Error:", error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="section bg-secondary relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-glow-dots z-0"></div>
-        <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
-            <motion.div 
-                className="max-w-2xl mx-auto text-center"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+    <section id="contact" className="relative py-20 md:py-32 overflow-hidden bg-onyx-profond">
+      {/* Static light halos for background depth */}
+      <div className="absolute -top-1/4 -left-1/4 w-full h-full pointer-events-none">
+        <div className="absolute w-[50rem] h-[50rem] rounded-full bg-indigo-electrique/10 blur-3xl" />
+      </div>
+      <div className="absolute -bottom-1/4 -right-1/4 w-full h-full pointer-events-none">
+        <div className="absolute w-[50rem] h-[50rem] rounded-full bg-dodger-blue/10 blur-3xl" />
+      </div>
+
+      <div className="container relative z-10 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-2xl mx-auto text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold font-satoshi text-ivoire-mat">
+            Let&apos;s Get in Touch
+          </h2>
+          <p className="mt-4 text-lg text-acier-doux">
+            Have a project in mind or just want to say hello? Fill out the form below and I&apos;ll get back to you as soon as possible.
+          </p>
+        </motion.div>
+
+        {/* The "Card" for the form */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="max-w-2xl mx-auto bg-onyx-profond/50 border border-gris-acier/50 rounded-2xl p-8 shadow-2xl backdrop-blur-lg"
+        >
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <FormInput
+              id="fullName"
+              label="Full Name"
+              icon={User}
+              register={register}
+              error={errors.fullName}
+              placeholder="Your Name"
+              onFocus={setFocusedField}
+              onBlur={setFocusedField}
+              focusedField={focusedField}
+            />
+            <FormInput
+              id="email"
+              label="Email Address"
+              icon={Mail}
+              register={register}
+              error={errors.email}
+              placeholder="your.email@example.com"
+              onFocus={setFocusedField}
+              onBlur={setFocusedField}
+              focusedField={focusedField}
+            />
+            <FormInput
+              id="companyName"
+              label="Company Name"
+              icon={Briefcase}
+              register={register}
+              error={errors.companyName}
+              placeholder="Your Company"
+              onFocus={setFocusedField}
+              onBlur={setFocusedField}
+              focusedField={focusedField}
+            />
+            <div>
+              <label htmlFor="message" className="sr-only">Message</label>
+              <div className="relative">
+                <div className="absolute top-4 left-4 pointer-events-none">
+                  <MessageSquare className={`h-5 w-5 transition-colors ${focusedField === 'message' ? 'text-indigo-electrique' : 'text-gray-400'}`} />
+                </div>
+                <textarea
+                  id="message"
+                  {...register("message")}
+                  placeholder="How can I help you?"
+                  rows={5}
+                  className="w-full pl-12 pr-4 py-3 bg-onyx-profond border border-gris-acier rounded-lg text-ivoire-mat placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-electrique focus:border-transparent"
+                  onFocus={() => setFocusedField('message')}
+                  onBlur={() => setFocusedField(null)}
+                />
+              </div>
+              {errors.message && <p className="mt-2 text-sm text-red-400">{errors.message.message}</p>}
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary w-full !py-4 !text-lg group flex items-center justify-center"
             >
-                <h2 className="text-4xl md:text-5xl font-bold font-satoshi mb-4 text-ivoire-mat">Ready to Build Content <span className="text-gradient">That Works?</span></h2>
-                <p className="text-lg text-acier-doux mb-12">
-                    Let&apos;s discuss how we can help you achieve your goals. Fill out the form below and we&apos;ll get back to you within 24 hours.
-                </p>
+              {isSubmitting ? "Sending..." : "Send Message"}
+              <Send className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
+          </form>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-left">
-                    <div className="grid md:grid-cols-2 md:gap-6">
-                        <div>
-                            <label htmlFor="fullName" className="block text-sm font-medium text-acier-doux mb-2">Full Name *</label>
-                            <div className="relative">
-                                <User className={`absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'fullName' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
-                                <input id="fullName" type="text" placeholder="John Doe" {...register("fullName")} className="input pl-10" onFocus={() => setFocusedField('fullName')} onBlur={() => setFocusedField(null)} />
-                            </div>
-                            {errors.fullName && <p className="text-red-400 mt-1 text-sm">{errors.fullName.message}</p>}
-                        </div>
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-acier-doux mb-2">Email Address *</label>
-                            <div className="relative">
-                                <Mail className={`absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'email' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
-                                <input id="email" type="email" placeholder="john@company.com" {...register("email")} className="input pl-10" onFocus={() => setFocusedField('email')} onBlur={() => setFocusedField(null)} />
-                            </div>
-                            {errors.email && <p className="text-red-400 mt-1 text-sm">{errors.email.message}</p>}
-                        </div>
-                    </div>
-
-                    <div>
-                        <label htmlFor="companyName" className="block text-sm font-medium text-acier-doux mb-2">Company Name *</label>
-                        <div className="relative">
-                            <Building2 className={`absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'companyName' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
-                            <input id="companyName" type="text" placeholder="Your Company" {...register("companyName")} className="input pl-10" onFocus={() => setFocusedField('companyName')} onBlur={() => setFocusedField(null)} />
-                        </div>
-                        {errors.companyName && <p className="text-red-400 mt-1 text-sm">{errors.companyName.message}</p>}
-                    </div>
-
-                    <div>
-                        <label htmlFor="budget" className="block text-sm font-medium text-acier-doux mb-2">Budget Range *</label>
-                        <div className="relative">
-                            <DollarSign className={`absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'budget' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
-                            <select id="budget" {...register("budget")} className="input pl-10" onFocus={() => setFocusedField('budget')} onBlur={() => setFocusedField(null)}>
-                                <option value="" disabled>Select budget range</option>
-                                <option value="5k-10k">$5,000 - $10,000</option>
-                                <option value="10k-25k">$10,000 - $25,000</option>
-                                <option value="25k-50k">$25,000 - $50,000</option>
-                                <option value="50k+">$50,000+</option>
-                            </select>
-                        </div>
-                        {errors.budget && <p className="text-red-400 mt-1 text-sm">{errors.budget.message}</p>}
-                    </div>
-
-                    <div>
-                        <label htmlFor="message" className="block text-sm font-medium text-acier-doux mb-2">How can we help you?</label>
-                        <div className="relative">
-                            <MessageSquare className={`absolute left-3 top-3 w-5 h-5 pointer-events-none transition-colors ${focusedField === 'message' ? 'text-indigo-electrique' : 'text-acier-doux'}`} />
-                            <textarea id="message" rows={4} placeholder="Tell us about your project..." {...register("message")} className="input resize-none pl-10" onFocus={() => setFocusedField('message')} onBlur={() => setFocusedField(null)}></textarea>
-                        </div>
-                        {errors.message && <p className="text-red-400 mt-1 text-sm">{errors.message.message}</p>}
-                    </div>
-
-                    <p className="text-xs text-acier-doux text-center">Your information is safe. I&apos;ll get back to you within 24 hours.</p>
-
-                    <motion.button 
-                        type="submit" 
-                        className="btn-primary w-full btn-lg group" 
-                        disabled={isSubmitting}
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        {isSubmitting ? (
-                            <span className="flex items-center justify-center"> <Send className="w-5 h-5 mr-2" /> Submitting...</span>
-                        ) : (
-                            <span className="flex items-center justify-center">Claim My Free Growth Strategy <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" /></span>
-                        )}
-                    </motion.button>
-
-                    {submitStatus === 'success' && (
-                        <div className="flex items-center justify-center text-emerald-400">
-                            <CheckCircle className="w-5 h-5 mr-2" />
-                            <p>Thank you for your message. We will get back to you shortly.</p>
-                        </div>
-                    )}
-                    {submitStatus === 'error' && (
-                        <div className="flex items-center justify-center text-red-400">
-                            <AlertTriangle className="w-5 h-5 mr-2" />
-                            <p>An error occurred. Please try again later.</p>
-                        </div>
-                    )}
-                </form>
-            </motion.div>
-        </div>
+          {submitStatus !== 'idle' && (
+            <div className="mt-6 text-center">
+              {submitStatus === 'success' && (
+                <div className="flex items-center justify-center text-emerald-400">
+                  <CheckCircle className="mr-2 h-5 w-5" />
+                  <p>Message sent successfully! I&apos;ll be in touch soon.</p>
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="flex items-center justify-center text-red-400">
+                  <AlertTriangle className="mr-2 h-5 w-5" />
+                  <p>Something went wrong. Please try again later.</p>
+                </div>
+              )}
+            </div>
+          )}
+        </motion.div>
+      </div>
     </section>
   );
 }

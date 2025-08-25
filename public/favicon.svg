@@ -1,10 +1,41 @@
-<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ContentOne favicon — round only">
+  <title>ContentOne — round favicon</title>
   <defs>
-    <linearGradient id="favicon-gradient" x1="0" y1="0" x2="100" y2="100">
-      <stop offset="0%" stop-color="#6366F1"/>
-      <stop offset="100%" stop-color="#06B6D4"/>
+    <!-- Diagonal blue → purple sweep across the disc -->
+    <linearGradient id="sweep" x1="76" y1="76" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1E90FF"/>
+      <stop offset="1" stop-color="#6366F1"/>
     </linearGradient>
+    <!-- Subtle vignette for depth -->
+    <radialGradient id="vignette" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(110 90) rotate(45) scale(140)">
+      <stop offset="0" stop-color="#000" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Round clipping to ensure the favicon appears circular (transparent corners) -->
+    <clipPath id="circleClip">
+      <circle cx="128" cy="128" r="88"/>
+    </clipPath>
   </defs>
-  <circle cx="50" cy="50" r="50" fill="url(#favicon-gradient)"/>
-  <text x="50" y="55" font-family="Satoshi, sans-serif" font-size="50" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">1</text>
+
+  <!-- Transparent canvas (no square background) -->
+  <rect width="256" height="256" fill="transparent"/>
+
+  <!-- Draw only the circular disc, clipped to remain perfectly round -->
+  <g clip-path="url(#circleClip)">
+    <!-- Dark base -->
+    <circle cx="128" cy="128" r="88" fill="#1A1D24"/>
+    <!-- Gradient sweep -->
+    <circle cx="128" cy="128" r="88" fill="url(#sweep)" opacity="0.9"/>
+    <!-- Vignette -->
+    <circle cx="128" cy="128" r="88" fill="url(#vignette)"/>
+  </g>
+
+  <!-- White “1” silhouette (kept centered over the disc). Adjust if needed after visual check -->
+  <g fill="#FFFFFF">
+    <!-- Main stem -->
+    <path d="M142 86c0-6-4-10-10-10h-2c-6 0-10 4-10 10v70c0 6 4 10 10 10h2c6 0 10-4 10-10V86z"/>
+    <!-- Tapered base -->
+    <rect x="116" y="154" width="44" height="12" rx="6"/>
+  </g>
 </svg>

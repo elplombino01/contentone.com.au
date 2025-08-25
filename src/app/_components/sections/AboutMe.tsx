@@ -149,7 +149,7 @@ export default function AboutMe() {
             <div
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-6"
             >
-              <Zap className="section-title-icon text-indigo-electrique" aria-hidden="true" />
+              <Zap className="section-title-icon w-6 h-6 text-indigo-electrique" aria-hidden="true" />
               <span className="text-sm font-inter text-indigo-electrique">Meet The Founder</span>
             </div>
             

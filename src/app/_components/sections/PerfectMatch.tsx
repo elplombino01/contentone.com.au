@@ -240,7 +240,7 @@ export default function PerfectMatch() {
             variants={itemVariants}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-6"
           >
-            <Sparkles className="section-title-icon text-indigo-electrique" />
+            <Sparkles className="section-title-icon w-6 h-6 text-indigo-electrique" />
             <span className="text-sm font-inter text-indigo-electrique">Find Your Perfect Match</span>
           </motion.div>
           

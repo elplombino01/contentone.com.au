@@ -215,7 +215,7 @@ export default function TrustedBy() {
             variants={itemVariants}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-6"
           >
-            <Sparkles className="section-title-icon text-indigo-electrique opacity-90 align-middle" />
+            <Sparkles className="section-title-icon w-6 h-6 text-indigo-electrique opacity-90 align-middle" />
             <span className="text-sm font-inter text-indigo-electrique">Trusted by Industry Leaders</span>
           </motion.div>
           
@@ -291,7 +291,7 @@ export default function TrustedBy() {
           >
             <div
               className="flex items-center gap-8 pr-8 will-change-transform"
-              style={reduceMotion ? undefined : { animation: "marquee 40s linear infinite" }}
+              style={reduceMotion ? undefined : { }}
               onMouseEnter={(e) => {
                 if (reduceMotion) return;
                 const track = e.currentTarget as HTMLElement;
