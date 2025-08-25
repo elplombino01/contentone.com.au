@@ -246,7 +246,7 @@
   }
 
   .section-title-icon {
-    @apply w-6 h-6 mr-2;
+    @apply w-6 h-6 mr-2 flex-shrink-0;
   }
 
   /* Container component */

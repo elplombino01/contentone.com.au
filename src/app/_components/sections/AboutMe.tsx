@@ -154,7 +154,7 @@ export default function AboutMe() {
             </div>
             
             <h2
-              className="text-4xl md:text-5xl font-satoshi font-bold text-ivoire-mat mb-6"
+              className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl leading-tight font-satoshi font-bold text-ivoire-mat mb-6"
             >
               <span className="inline-flex items-center">
                 <svg className="section-title-icon align-middle opacity-80 text-indigo-electrique" aria-hidden="true" viewBox="0 0 24 24" fill="none" focusable="false">
@@ -180,18 +180,7 @@ export default function AboutMe() {
             <div
               className="relative mb-8"
             >
-              <motion.div
-                className="absolute -left-4 -top-4 text-indigo-electrique opacity-20 ml-4"
-                animate={{
-                  rotate: [0, 5, -5, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  ease: "easeInOut",
-                }}
-              >
-                <Quote className="w-16 h-16" />
-              </motion.div>
+              
               <motion.blockquote
                 className="border-l-4 border-indigo-electrique pl-6 py-2 relative overflow-hidden"
                 whileHover={{

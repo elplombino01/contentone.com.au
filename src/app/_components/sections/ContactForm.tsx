@@ -67,7 +67,7 @@ export default function ContactForm() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
             >
-                <h2 className="text-4xl md:text-5xl font-bold font-satoshi mb-4 text-ivoire-mat">Ready to Build Content That Works?</h2>
+                <h2 className="text-4xl md:text-5xl font-bold font-satoshi mb-4 text-ivoire-mat">Ready to Build Content <span className="text-gradient">That Works?</span></h2>
                 <p className="text-lg text-acier-doux mb-12">
                     Let&apos;s discuss how we can help you achieve your goals. Fill out the form below and we&apos;ll get back to you within 24 hours.
                 </p>
