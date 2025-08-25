@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, FieldError } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
 import { Send, User, Mail, Briefcase, MessageSquare, CheckCircle, AlertTriangle } from "lucide-react";
+import React from "react";
 
 // Zod schema for form validation
 const contactSchema = z.object({
@@ -17,8 +18,21 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
+// Define props type for the reusable input component
+interface FormInputProps {
+    id: keyof ContactFormData;
+    icon: React.ElementType;
+    label: string;
+    register: any; // react-hook-form's register function
+    error: FieldError | undefined;
+    placeholder: string;
+    onFocus: (id: string) => void;
+    onBlur: (id: string | null) => void;
+    focusedField: string | null;
+}
+
 // Reusable input field component for consistency
-const FormInput = ({ id, icon: Icon, label, register, error, placeholder, onFocus, onBlur, focusedField }) => (
+const FormInput: React.FC<FormInputProps> = ({ id, icon: Icon, label, register, error, placeholder, onFocus, onBlur, focusedField }) => (
   <div>
     <label htmlFor={id} className="sr-only">{label}</label>
     <div className="relative">
