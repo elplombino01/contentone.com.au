@@ -22,7 +22,7 @@ const clients = [
   // Reduce BAD Workwear size even more
   { name: "BAD Workwear", logo: "/images/bad-workwear-logo.webp", width: 120, height: 30, industry: "SaaS", growth: "+180%" },
   // Increase 124 Shoes size by 300% (triple the current size)
-  { name: "124 Shoes", logo: "/images/124-shoes-logo.webp", width: 8640, height: 2160, industry: "E-commerce", growth: "+320%" },
+  { name: "124 Shoes", logo: "/images/124-shoes-logo.webp", width: 480, height: 120, industry: "E-commerce", growth: "+320%" },
   { name: "Altea", logo: "/images/altea-logo.webp", width: 160, height: 40, industry: "Analytics", growth: "+150%" },
 ];
 // Duo-track for seamless loop without gap
@@ -93,6 +93,15 @@ export default function TrustedBy() {
       return () => clearInterval(timer);
     }
   }, [isInView]);
+
+  useEffect(() => {
+    if (!reduceMotion) {
+      const timer = setTimeout(() => {
+        setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+      }, 5000); // Change every 5 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [activeTestimonial, reduceMotion]);
 
   
 
@@ -282,7 +291,7 @@ export default function TrustedBy() {
           >
             <div
               className="flex items-center gap-8 pr-8 will-change-transform"
-              style={reduceMotion ? undefined : { }}
+              style={reduceMotion ? undefined : { animation: "marquee 40s linear infinite" }}
               onMouseEnter={(e) => {
                 if (reduceMotion) return;
                 const track = e.currentTarget as HTMLElement;
