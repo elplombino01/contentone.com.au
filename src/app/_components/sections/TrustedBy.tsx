@@ -42,7 +42,7 @@ const testimonials = [
     avatar: "/avatars/sarah-johnson.jpg"
   },
   {
-    quote: "The team's data-driven approach helped us scale our user acquisition while maintaining quality. We've seen a 3x increase in qualified leads.",
+    quote: "The team's data-driven approach scaled our user acquisition and tripled our qualified leads, all while maintaining quality.",
     author: "Michael Chen",
     role: "Head of Growth, GrowthLab",
     avatar: "/avatars/michael-chen.jpg"

@@ -137,7 +137,7 @@ export default function AboutMe() {
         
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             variants={containerVariants}

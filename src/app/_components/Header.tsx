@@ -57,7 +57,7 @@ export default function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "sticky top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled ? "glass border-b border-indigo-electrique/20 shadow-glow" : "bg-transparent"
         )}
       >

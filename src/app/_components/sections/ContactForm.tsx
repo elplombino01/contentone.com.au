@@ -59,7 +59,7 @@ export default function ContactForm() {
   return (
     <section id="contact" className="section bg-secondary relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-glow-dots z-0"></div>
-        <div className="container relative z-10">
+        <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
             <motion.div 
                 className="max-w-2xl mx-auto text-center"
                 variants={containerVariants}

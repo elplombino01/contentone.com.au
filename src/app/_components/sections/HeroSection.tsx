@@ -39,21 +39,24 @@ export default function HeroSection() {
       {/* Static Gradient Background Overlay */}
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent via-onyx-profond/50 to-onyx-profond" />
 
-      {/* Static Ambient Blobs for visual depth - NO ANIMATION */}
-      <div className="absolute top-1/4 left-10 w-72 h-72 bg-indigo-electrique/10 rounded-full filter blur-3xl opacity-50 z-[-1]"></div>
-      <div className="absolute bottom-1/4 right-10 w-72 h-72 bg-cyan-electrique/10 rounded-full filter blur-3xl opacity-50 z-[-1]"></div>
-      <div className="absolute top-1/2 left-1/3 w-56 h-56 bg-violet-profond/10 rounded-full filter blur-2xl opacity-40 z-[-1]"></div>
-      <div className="absolute bottom-1/2 right-1/3 w-56 h-56 bg-indigo-brillant/10 rounded-full filter blur-2xl opacity-40 z-[-1]"></div>
+      {/* Background decoration (reduced-motion safe) */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-indigo-electrique/5 blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-cyan-electrique/5 blur-3xl" />
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-grid-pattern bg-[length:40px_40px]" />
+        </div>
+      </div>
 
       {/* Animate the container, not individual elements for performance */}
       <motion.div
-        className="relative z-10 flex flex-col items-center"
+        className="relative z-10 flex flex-col items-center px-4 sm:px-6 lg:px-8"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         // viewport={{ once: true }} // This is not needed with animate="visible"
       >
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-8">
+        <motion.div variants={itemVariants} className="hidden lg:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-electrique/10 border border-indigo-electrique/20 mb-8">
           <Sparkles className="w-4 h-4 text-indigo-electrique" />
           <span className="text-sm font-inter text-indigo-electrique">Performance-Driven Content Agency</span>
         </motion.div>

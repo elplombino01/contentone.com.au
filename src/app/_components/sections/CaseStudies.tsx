@@ -145,7 +145,7 @@ export default function CaseStudies() {
       className="section bg-gradient-to-br from-onyx-profond via-secondary to-onyx-profond relative overflow-hidden"
       id="case-studies"
     >
-      <div className="container">
+      <div className="container px-4 sm:px-6 lg:px-8">
       {/* Background decoration (simplified; no perpetual particles) */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-indigo-electrique/5 blur-3xl" />

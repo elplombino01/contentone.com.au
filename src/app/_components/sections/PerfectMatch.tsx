@@ -228,7 +228,7 @@ export default function PerfectMatch() {
         <ClientParticles reduceMotion={reduceMotion} />
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -338,14 +338,14 @@ export default function PerfectMatch() {
                   >
                     <div className="grid md:grid-cols-2 gap-8">
                       <div>
-                        <h4 className="text-lg font-satoshi font-semibold text-ivoire-mat mb-3">Our Solution</h4>
+                        <h4 className="text-lg md:text-xl font-satoshi font-semibold text-ivoire-mat mb-3">Our Solution</h4>
                         <p className="text-acier-doux font-inter leading-relaxed mb-4">
                           {card.solution}
                         </p>
                       </div>
 
                       <div>
-                        <h4 className="text-lg font-satoshi font-semibold text-ivoire-mat mb-3">Key Benefits</h4>
+                        <h4 className="text-lg md:text-xl font-satoshi font-semibold text-ivoire-mat mb-3">Key Benefits</h4>
                         <ul className="space-y-2">
                           {card.benefits.map((benefit, idx) => (
                             <li key={idx} className="flex items-start gap-2">

@@ -161,7 +161,7 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           variants={containerVariants}
@@ -275,7 +275,7 @@ export default function Services() {
             className="text-center mb-12"
             viewport={{ once: true }}
           >
-            <h3 className="text-3xl font-satoshi font-bold text-ivoire-mat mb-4" id="services-process-heading">
+            <h3 className="text-3xl md:text-4xl font-satoshi font-bold text-ivoire-mat mb-4" id="services-process-heading">
               Our <span className="text-gradient bg-gradient-to-r from-indigo-electrique to-cyan-electrique bg-clip-text text-transparent">Process</span>
             </h3>
             <p className="text-lg text-acier-doux font-inter max-w-2xl mx-auto">
@@ -311,7 +311,7 @@ export default function Services() {
                   </div>
                 </div>
                 
-                <h4 className="text-xl font-satoshi font-bold text-ivoire-mat mb-2">
+                <h4 className="text-xl md:text-2xl font-satoshi font-bold text-ivoire-mat mb-2">
                   {step.title}
                 </h4>
                 <p className="text-acier-doux font-inter">
@@ -332,7 +332,7 @@ export default function Services() {
         >
           <div className="inline-block p-1 rounded-2xl bg-gradient-to-r from-indigo-electrique to-cyan-electrique">
             <div className="bg-secondary rounded-2xl p-8 md:p-12">
-              <h3 className="text-2xl md:text-3xl font-satoshi font-bold text-ivoire-mat mb-4">
+              <h3 className="text-2xl md:text-3xl xl:text-4xl font-satoshi font-bold text-ivoire-mat mb-4">
                 Ready to Transform Your Business?
               </h3>
               <p className="text-lg text-acier-doux font-inter max-w-2xl mx-auto mb-8">
